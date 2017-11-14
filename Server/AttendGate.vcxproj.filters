@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="logger">
+      <UniqueIdentifier>{115d6138-a662-455e-a964-b3398e2f7023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="buff">
+      <UniqueIdentifier>{8101c406-bc69-4b94-b854-8a1af9afd285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="server">
+      <UniqueIdentifier>{4559d729-939a-45f6-94cf-f7bd8e152f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="com">
+      <UniqueIdentifier>{bfc4dcfb-2c99-42c5-914e-5eb06fa33e35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="biz">
+      <UniqueIdentifier>{a4ff4828-b694-47d4-bcc8-b33fc1fc3633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attend">
+      <UniqueIdentifier>{4d933b01-edae-4a0c-a9c9-75f8e3e0b47c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="clienthandler.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="tcpservermgr.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="clientmsgservice.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="packetparser.cpp">
+      <Filter>com</Filter>
+    </ClCompile>
+    <ClCompile Include="clientmgr.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="bizbase.cpp">
+      <Filter>biz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\buff\msgbean.pb.cc">
+      <Filter>buff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\buff\msgbody.pb.cc">
+      <Filter>buff</Filter>
+    </ClCompile>
+    <ClCompile Include="confmgr.cpp">
+      <Filter>com</Filter>
+    </ClCompile>
+    <ClCompile Include="comutils.cpp">
+      <Filter>com</Filter>
+    </ClCompile>
+    <ClCompile Include="attendmgr.cpp">
+      <Filter>attend</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="defines.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="clienthandler.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="tcpservermgr.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="clientmsgservice.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="packetparser.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="clientmgr.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="bizbase.h">
+      <Filter>biz</Filter>
+    </ClInclude>
+    <ClInclude Include="cmdbase.h">
+      <Filter>biz</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\buff\msgbean.pb.h">
+      <Filter>buff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\buff\msgbody.pb.h">
+      <Filter>buff</Filter>
+    </ClInclude>
+    <ClInclude Include="confmgr.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\include\commands.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="comutils.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="attendmgr.h">
+      <Filter>attend</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
