@@ -34,5 +34,5 @@ void BizBase::exec(sClientMsg* msg)
 void BizBase::sendBusyBack(sClientMsg* msg)
 {
 	string data = "server is busy,wait a moment please.";
-	App_ClientMgr::instance()->sendData(msg->connectId,data,CMD_SERVER_BUSY);
+	App_ClientMgr::instance()->sendData(msg->connectId,data,CMD_GetAllUserID);
 }
