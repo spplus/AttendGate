@@ -48,7 +48,7 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 		LOG->message("recv length 0,connection closed.");
 		return -1;
 	}
-	if (len != FRAME_HEAD_LEN)
+ 	if (len != FRAME_HEAD_LEN)
 	{
 		LOG->warn("invalid frame head len:%d",len);
 		return 0;

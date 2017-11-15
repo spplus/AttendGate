@@ -57,9 +57,6 @@
     <ClCompile Include="bizbase.cpp">
       <Filter>biz</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\buff\msgbean.pb.cc">
-      <Filter>buff</Filter>
-    </ClCompile>
     <ClCompile Include="..\common\buff\msgbody.pb.cc">
       <Filter>buff</Filter>
     </ClCompile>
@@ -103,9 +100,6 @@
     </ClInclude>
     <ClInclude Include="structs.h">
       <Filter>com</Filter>
-    </ClInclude>
-    <ClInclude Include="..\common\buff\msgbean.pb.h">
-      <Filter>buff</Filter>
     </ClInclude>
     <ClInclude Include="..\common\buff\msgbody.pb.h">
       <Filter>buff</Filter>

@@ -1,538 +1,87 @@
-import "msgbean.proto";
 package com.spplus.buff;
 
-//用户登录管理
-message UserLoginMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	username	= 1;			
-		optional bytes	userpwd		= 2;		
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32	rescode			= 1;	// 0 成功，其他失败
-		repeated UserBean	userlist	= 2;	// 用户列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
 
-//用户列表管理
-message UserListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32		rescode		= 1;	// 0 成功，其他失败
-		repeated UserBean	userlist	= 2;	// 用户列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-//用户角色列表
-message UserRoleListMsg
+// 打卡机信息
+message AttendBean
 {
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32		rescode		= 1;			// 0 成功，其他失败
-		repeated UserRoleBean	userrolelist	= 2;	// 用户角色列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
+	optional int64 nMachineNumber 	= 1;
+	optional bytes ipAddr	 		= 2;
+	optional int64 nPort			= 3;
+	optional int64 nNetPassword		= 4;
+	optional int64 nLicense			= 5;
 }
 
-//用户操作管理
-message UserMgrMsg
+//用户基础信息
+message UserBean
+{ 
+    optional int64 apnEnrollNumer  		= 1;
+    optional int64 apnBackUpNumber 		= 2;
+	optional int64 apnMechinePrivilege 	= 3;
+    optional int64 apnEnableFlage 		= 4; 
+	optional int64 apnEnrollData 		= 5; 
+	optional int64 apnPassWord	 		= 6;
+
+}
+
+// 签到记录
+message LogDataBean
+{
+	optional int64 apnEnrollNumer  	= 1;
+    optional int64 apnVerifyMode	= 2;
+	optional int64 apnInOutMode		= 3;
+	optional bytes apnDateTime		= 4;
+}
+
+
+// 添加用户
+message PutEnrollDataMsg
 { 
 	//请求体定义
 	message Request {
-		optional bytes	mgrsql	= 1;		//用户管理中增加删除修改组合的sql语句		
+		optional UserBean 	user	= 1;		// 用户信息	
+		optional AttendBean	attend	= 2;		// 打卡机信息
   	}
   	//响应体定义
 	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
+		optional uint32		rescode			= 1;	// 0 成功，其他失败
   	}
 	optional Request 	request 	= 1;
   	optional Response 	response 	= 2;
   
 }
 
-//厂站类型管理
-message StationTypeMgrMsg
+// 获取用户数据
+message GetEnrollDataMsg
 { 
 	//请求体定义
 	message Request {
-		optional bytes	mgrsql	= 1;		//厂站类型管理中增加，修改组合的sql语句		
+		optional int64 		apnEnrollNumer  		= 1;		// 用户ID
+		optional AttendBean	attend					= 2;		// 打卡机信息	
   	}
   	//响应体定义
 	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
+		optional UserBean 	user			= 1;
+		optional uint32		rescode			= 2;	// 0 成功，其他失败
   	}
 	optional Request 	request 	= 1;
   	optional Response 	response 	= 2;
   
 }
 
-//厂站管理
-message StationMgrMsg
+// 获取用户打卡记录
+message GetGeneralLogDataMsg
 { 
 	//请求体定义
 	message Request {
-		optional bytes	reqdate	= 1;				//请求	
-		repeated StationBean	stationlist	= 2;	//请求更新的厂站列表
+		optional AttendBean	attend					= 1;		// 打卡机信息				
   	}
   	//响应体定义
 	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
+		repeated LogDataBean logrec			= 1;	// 返回的全部打开记录
+		optional uint32		rescode			= 2;	// 0 成功，其他失败
   	}
 	optional Request 	request 	= 1;
   	optional Response 	response 	= 2;
   
 }
-
-
-//规则列表
-message RuleListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32		rescode		= 1;	// 0 成功，其他失败
-		repeated RuleBean	rulelist	= 2;	// 规则列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//规则操作管理
-message RuleMgrMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	mgrsql	= 1;		//规则编辑管理中增加删除修改组合的sql语句		
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//站点规则关联关系列表
-message StationRuleListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32		rescode		= 1;		// 0 成功，其他失败
-		repeated StationRuleBean	starulelist	= 2;	// 站点规则关联关系列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//站点规则关联关系列表管理
-message StationRuleMgrMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	reqtype	= 1;					//请求类型	
-		optional bytes	mgrsql	= 2;					//厂站规则启用停运组合的sql语句	
-		repeated StationRuleBean	stationrllist	= 3;	//请求更新的厂站规则关联列表
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-//环路查询列表
-message CircleListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	saveId		= 1;		// 存档ID					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated CircleQueryBean	circlelist	= 2;	// 环路列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//挂牌列表
-message SignListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated SignQueryBean	signlist	= 2;	// 挂牌列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//接地列表
-message GswitchListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated GswitchQueryBean	gswitchlist	= 2;	// 接地列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//人工设置列表
-message MsetListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated MsetQueryBean	msetlist	= 2;	// 人工设置列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//事件查询列表
-message EventListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	reqdate	= 1;		// 请求日期，可以不填					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated EventQueryBean	eventlist	= 2;	// 事件查询列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-
-// 元件状态消息
-message DevStateMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	saveId		= 1;		// 存档ID
-		optional bytes	stationCim	= 2;		// 站点CIMID
-		optional bytes	unitCim		= 3;		// 设备CIMID
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32		rescode		= 1;	// 0 成功，其他失败
-		repeated StateBean	devState	= 2;	// 元件状态列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-
-// 站点类别消息
-message StationTypeMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	saveId		= 1;		// 
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated StationTypeBean	typeList	= 2;	// 站点分类列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 站点列表消息
-message StationListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	stationId		= 1;		// 站点ID
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated StationBean		stationList	= 2;	// 站点分类列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 挂牌，摘牌消息
-message TagMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	saveId		= 1;		// ID
-		optional uint32	type		= 2;		// 操作类型 0 摘牌，1挂牌
-		optional bytes	unitCim		= 3;		// 元件cim
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		optional bytes			resmsg		= 2;	// 
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 开关操作消息
-message OprationMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	saveId		= 1;		// ID
-		optional uint32	type		= 2;		// 操作类型 0 分，1 合
-		optional bytes	unitCim		= 3;		// 元件cim
-		optional bool	ischeck		= 4;		// 是否允许校验	
-		optional uint32	unittype	= 5;		// 元件类型
-		optional bytes	stationCim	= 6;		// 站点CIM
-		repeated StateBean	opdevlist= 7;		// 客户端变位设备列表
-		repeated StateBean	linelist = 8;		// 进出线列表，state =1 表示要添加，state=0 表示要剔除
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		optional bytes			resmsg		= 2;	// 
-		repeated StateBean		devState	= 3;	// 返回设备列表
-		repeated RuleBean		ruleList	= 4;	// 规则列表
-		optional uint32			optype		= 5;	// 操作类型
-		repeated StateBean		opList		= 6;	// 服务器设置设备列表，返回加入到客户端操作设备列表中
-		repeated StateBean		linelist 	= 7;
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 设置电源点消息
-message PowerSetMsg
-{ 
-	//请求体定义
-	message Request {
-		
-		optional bytes	stationCim	= 1;		// 站点cim
-		optional bytes	unitCim		= 2;		// 元件cim
-		optional uint32	saveid		= 3;		// 存档ID
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		optional bytes			resmsg		= 2;	// 
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 设置进出线消息
-message LineSetMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	unitCim				= 1;		// 元件cim
-		optional bytes	stationOneCim		= 2;		// 站点cim
-		optional bytes	stationOtherCim		= 3;		// 站点cim
-						
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		optional bytes			resmsg		= 2;	// 
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-// 获取存档列表消息
-message SavingListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	id				= 1;		// 获取所有存档列表，该参数无用		
-  	}
-  	//响应体定义
-	message Response {
-		repeated SavingBean		saveList	= 1;
-		optional uint32			rescode		= 2;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-// 保存存档
-message WriteSavingMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	saveName			= 1;		// 存档名称
-		optional uint32 saveId				= 2;		// 断面ID
-		repeated StateBean stateList		= 3;		// 元件状态列表
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-
-//操作票任务列表
-message TicketMsionListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	userid		= 1;		// 当前用户ID	
-		optional uint32	roleid		= 2;		// 当前用户角色ID
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated TicketMsionBean	tktMsionlist	= 2;	// 操作票任务列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//操作票操作管理
-message TicketMgrMsg
-{ 
-	//请求体定义
-	message Request {
-		optional bytes	mgrsql	= 1;		//操作票任务增加删除修改组合的sql语句		
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//操作票列表
-message TicketListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	reqtype	= 1;		//请求类型
-		optional uint32	reqid	= 2;		//请求查询需要的ID					
-  	}
-  	//响应体定义
-	message Response {
-		
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated TicketBean	    ticketlist	= 2;	// 操作票列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-//操作票明细列表管理
-message TicketActMgrMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	reqUid	= 1;					//请求用户id	
-		optional uint32	reqMid	= 2;					//请求任务ID
-		optional bytes	startT	= 3;					//操作开始时间
-		optional bytes	endT	= 4;					//操作结束数据
-		optional bytes	mgrsql	= 5;					//操作票任务增加sql语句
-		repeated TicketActBean	ticketactlist	= 6;	//请求写入的操作票明细列表
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32	rescode		= 1;	// 0 成功，其他失败
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-  
-}
-
-//操作票明细列表
-message TicketActListMsg
-{ 
-	//请求体定义
-	message Request {
-		optional uint32	reqid	= 1;		//请求的操作票ID					
-  	}
-  	//响应体定义
-	message Response {
-		optional uint32			rescode		= 1;	// 0 成功，其他失败
-		repeated TicketActBean	ticketactlist	= 2;	// 操作票列表
-  	}
-	optional Request 	request 	= 1;
-  	optional Response 	response 	= 2;
-}
-
-
 

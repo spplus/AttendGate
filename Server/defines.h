@@ -21,7 +21,7 @@
 using namespace std;
 
 // 包头
-const short		FRAM_TAG_HEAD = 	0x11;
+const short		FRAM_TAG_HEAD = 	0xff;
 
 // 包尾
 const short		FRAME_TAG_END = 	0x88;

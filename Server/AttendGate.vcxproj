@@ -68,7 +68,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\common\buff\msgbean.pb.cc" />
     <ClCompile Include="..\common\buff\msgbody.pb.cc" />
     <ClCompile Include="attendmgr.cpp" />
     <ClCompile Include="bizbase.cpp" />
@@ -83,7 +82,6 @@
     <ClCompile Include="tcpservermgr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\common\buff\msgbean.pb.h" />
     <ClInclude Include="..\common\buff\msgbody.pb.h" />
     <ClInclude Include="..\common\include\commands.h" />
     <ClInclude Include="attendmgr.h" />
