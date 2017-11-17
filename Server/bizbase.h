@@ -17,20 +17,7 @@ class BizBase
 public:
 	BizBase();
 
-	// 请求获取用户
-	void		getUser(sClientMsg* msg);
 	
-	// 添加用户
-	void		putUser(sClientMsg* msg);
-
-	// 请求打卡记录
-	void		getLogData(sClientMsg* msg);
-
-	// 设置用户使能
-	void		enableUser(sClientMsg* msg);
-
-	// 删除用户
-	void		delUser(sClientMsg* msg);
 
 	// 执行业务逻辑
 	void		exec(sClientMsg* msg);

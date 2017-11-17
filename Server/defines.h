@@ -9,6 +9,7 @@
 #ifndef __DEFINE_H__
 #define __DEFINE_H__
 
+
 #include "ace/Log_Msg.h"
 #include "ace/OS_main.h" 
 #include "ace/streams.h" 
@@ -16,6 +17,8 @@
 #include "ace/ACE.h"
 #include "ace/OS.h"
 #include "logger.h"
+
+
 #include <map>
 #include <vector>
 using namespace std;
@@ -25,6 +28,21 @@ const short		FRAM_TAG_HEAD = 	0xff;
 
 // 包尾
 const short		FRAME_TAG_END = 	0x88;
+
+
+// 操作状态
+#define		OP_SUCCUSS		1
+
+// 授权
+#define		LICENSE			1262
+
+// 超时
+#define		NTIMEOUT		5000
+
+// 连接密码
+#define		NETPASSWORD		0
+
+
 
 // 包标识长度
 #define		FRAME_TAG__LEN	2
@@ -58,7 +76,7 @@ const short		FRAME_TAG_END = 	0x88;
 #define		CIM_DEFAULT_CHECKHOUR		23
 
 // 日志文件名称
-#define		LOGNAME "AmServer"
+#define		LOGNAME "GateServer"
 
 // 保留消息类型定义
 #define		SYS_MSG_CONNECTED		10		// 连接建立
@@ -82,5 +100,7 @@ typedef   	vector<STRMAP>					LISTMAP	;
 typedef		map<int,int>						RMAP;
 typedef		RMAP::value_type					RVAL;
 typedef		RMAP::iterator					R_ITERATOR;
+
+
 
 #endif

@@ -16,11 +16,17 @@
 #include "clientmgr.h"
 #include "include/commands.h"
 #include "comutils.h"
-
+#include <WTypes.h>
+#include "include/FKAttend.h"
+#include "include/PreDefine.h"
 class CmdBase
 {
 public:
-	virtual void		exec(sClientMsg* msg) = 0;
+	virtual void	exec(sClientMsg* msg) = 0;
+
+protected:
+	int		connectNet(long mechineId,const char* ipaddr,int port);
+	void	disConnect(int connectId);
 
 protected:
 	int		str2i(string val)
@@ -36,6 +42,9 @@ protected:
 		strval.append(temp);
 		return strval;
 	}
+
+private:
+	int		m_connectId;
 };
 
 #endif

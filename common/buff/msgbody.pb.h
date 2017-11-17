@@ -47,6 +47,12 @@ class GetEnrollDataMsg_Response;
 class GetGeneralLogDataMsg;
 class GetGeneralLogDataMsg_Request;
 class GetGeneralLogDataMsg_Response;
+class SetDoorStatusMsg;
+class SetDoorStatusMsg_Request;
+class SetDoorStatusMsg_Response;
+class EnableUserMsg;
+class EnableUserMsg_Request;
+class EnableUserMsg_Response;
 
 // ===================================================================
 
@@ -252,12 +258,12 @@ class UserBean : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 apnmechineprivilege() const;
   inline void set_apnmechineprivilege(::google::protobuf::int64 value);
 
-  // optional int64 apnEnableFlage = 4;
-  inline bool has_apnenableflage() const;
-  inline void clear_apnenableflage();
-  static const int kApnEnableFlageFieldNumber = 4;
-  inline ::google::protobuf::int64 apnenableflage() const;
-  inline void set_apnenableflage(::google::protobuf::int64 value);
+  // optional int64 apnEnableFlag = 4;
+  inline bool has_apnenableflag() const;
+  inline void clear_apnenableflag();
+  static const int kApnEnableFlagFieldNumber = 4;
+  inline ::google::protobuf::int64 apnenableflag() const;
+  inline void set_apnenableflag(::google::protobuf::int64 value);
 
   // optional int64 apnEnrollData = 5;
   inline bool has_apnenrolldata() const;
@@ -281,8 +287,8 @@ class UserBean : public ::google::protobuf::Message {
   inline void clear_has_apnbackupnumber();
   inline void set_has_apnmechineprivilege();
   inline void clear_has_apnmechineprivilege();
-  inline void set_has_apnenableflage();
-  inline void clear_has_apnenableflage();
+  inline void set_has_apnenableflag();
+  inline void clear_has_apnenableflag();
   inline void set_has_apnenrolldata();
   inline void clear_has_apnenrolldata();
   inline void set_has_apnpassword();
@@ -293,7 +299,7 @@ class UserBean : public ::google::protobuf::Message {
   ::google::protobuf::int64 apnenrollnumer_;
   ::google::protobuf::int64 apnbackupnumber_;
   ::google::protobuf::int64 apnmechineprivilege_;
-  ::google::protobuf::int64 apnenableflage_;
+  ::google::protobuf::int64 apnenableflag_;
   ::google::protobuf::int64 apnenrolldata_;
   ::google::protobuf::int64 apnpassword_;
 
@@ -1266,6 +1272,576 @@ class GetGeneralLogDataMsg : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static GetGeneralLogDataMsg* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class SetDoorStatusMsg_Request : public ::google::protobuf::Message {
+ public:
+  SetDoorStatusMsg_Request();
+  virtual ~SetDoorStatusMsg_Request();
+
+  SetDoorStatusMsg_Request(const SetDoorStatusMsg_Request& from);
+
+  inline SetDoorStatusMsg_Request& operator=(const SetDoorStatusMsg_Request& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetDoorStatusMsg_Request& default_instance();
+
+  void Swap(SetDoorStatusMsg_Request* other);
+
+  // implements Message ----------------------------------------------
+
+  SetDoorStatusMsg_Request* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SetDoorStatusMsg_Request& from);
+  void MergeFrom(const SetDoorStatusMsg_Request& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  inline bool has_attend() const;
+  inline void clear_attend();
+  static const int kAttendFieldNumber = 1;
+  inline const ::com::spplus::buff::AttendBean& attend() const;
+  inline ::com::spplus::buff::AttendBean* mutable_attend();
+  inline ::com::spplus::buff::AttendBean* release_attend();
+  inline void set_allocated_attend(::com::spplus::buff::AttendBean* attend);
+
+  // optional uint32 status = 2;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 2;
+  inline ::google::protobuf::uint32 status() const;
+  inline void set_status(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.SetDoorStatusMsg.Request)
+ private:
+  inline void set_has_attend();
+  inline void clear_has_attend();
+  inline void set_has_status();
+  inline void clear_has_status();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::AttendBean* attend_;
+  ::google::protobuf::uint32 status_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static SetDoorStatusMsg_Request* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SetDoorStatusMsg_Response : public ::google::protobuf::Message {
+ public:
+  SetDoorStatusMsg_Response();
+  virtual ~SetDoorStatusMsg_Response();
+
+  SetDoorStatusMsg_Response(const SetDoorStatusMsg_Response& from);
+
+  inline SetDoorStatusMsg_Response& operator=(const SetDoorStatusMsg_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetDoorStatusMsg_Response& default_instance();
+
+  void Swap(SetDoorStatusMsg_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  SetDoorStatusMsg_Response* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SetDoorStatusMsg_Response& from);
+  void MergeFrom(const SetDoorStatusMsg_Response& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 rescode = 1;
+  inline bool has_rescode() const;
+  inline void clear_rescode();
+  static const int kRescodeFieldNumber = 1;
+  inline ::google::protobuf::uint32 rescode() const;
+  inline void set_rescode(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.SetDoorStatusMsg.Response)
+ private:
+  inline void set_has_rescode();
+  inline void clear_has_rescode();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 rescode_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static SetDoorStatusMsg_Response* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SetDoorStatusMsg : public ::google::protobuf::Message {
+ public:
+  SetDoorStatusMsg();
+  virtual ~SetDoorStatusMsg();
+
+  SetDoorStatusMsg(const SetDoorStatusMsg& from);
+
+  inline SetDoorStatusMsg& operator=(const SetDoorStatusMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetDoorStatusMsg& default_instance();
+
+  void Swap(SetDoorStatusMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  SetDoorStatusMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SetDoorStatusMsg& from);
+  void MergeFrom(const SetDoorStatusMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef SetDoorStatusMsg_Request Request;
+  typedef SetDoorStatusMsg_Response Response;
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.SetDoorStatusMsg.Request request = 1;
+  inline bool has_request() const;
+  inline void clear_request();
+  static const int kRequestFieldNumber = 1;
+  inline const ::com::spplus::buff::SetDoorStatusMsg_Request& request() const;
+  inline ::com::spplus::buff::SetDoorStatusMsg_Request* mutable_request();
+  inline ::com::spplus::buff::SetDoorStatusMsg_Request* release_request();
+  inline void set_allocated_request(::com::spplus::buff::SetDoorStatusMsg_Request* request);
+
+  // optional .com.spplus.buff.SetDoorStatusMsg.Response response = 2;
+  inline bool has_response() const;
+  inline void clear_response();
+  static const int kResponseFieldNumber = 2;
+  inline const ::com::spplus::buff::SetDoorStatusMsg_Response& response() const;
+  inline ::com::spplus::buff::SetDoorStatusMsg_Response* mutable_response();
+  inline ::com::spplus::buff::SetDoorStatusMsg_Response* release_response();
+  inline void set_allocated_response(::com::spplus::buff::SetDoorStatusMsg_Response* response);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.SetDoorStatusMsg)
+ private:
+  inline void set_has_request();
+  inline void clear_has_request();
+  inline void set_has_response();
+  inline void clear_has_response();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::SetDoorStatusMsg_Request* request_;
+  ::com::spplus::buff::SetDoorStatusMsg_Response* response_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static SetDoorStatusMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EnableUserMsg_Request : public ::google::protobuf::Message {
+ public:
+  EnableUserMsg_Request();
+  virtual ~EnableUserMsg_Request();
+
+  EnableUserMsg_Request(const EnableUserMsg_Request& from);
+
+  inline EnableUserMsg_Request& operator=(const EnableUserMsg_Request& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EnableUserMsg_Request& default_instance();
+
+  void Swap(EnableUserMsg_Request* other);
+
+  // implements Message ----------------------------------------------
+
+  EnableUserMsg_Request* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EnableUserMsg_Request& from);
+  void MergeFrom(const EnableUserMsg_Request& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  inline bool has_attend() const;
+  inline void clear_attend();
+  static const int kAttendFieldNumber = 1;
+  inline const ::com::spplus::buff::AttendBean& attend() const;
+  inline ::com::spplus::buff::AttendBean* mutable_attend();
+  inline ::com::spplus::buff::AttendBean* release_attend();
+  inline void set_allocated_attend(::com::spplus::buff::AttendBean* attend);
+
+  // optional uint32 apnEnableFlag = 2;
+  inline bool has_apnenableflag() const;
+  inline void clear_apnenableflag();
+  static const int kApnEnableFlagFieldNumber = 2;
+  inline ::google::protobuf::uint32 apnenableflag() const;
+  inline void set_apnenableflag(::google::protobuf::uint32 value);
+
+  // optional uint32 apnEnrollNumer = 3;
+  inline bool has_apnenrollnumer() const;
+  inline void clear_apnenrollnumer();
+  static const int kApnEnrollNumerFieldNumber = 3;
+  inline ::google::protobuf::uint32 apnenrollnumer() const;
+  inline void set_apnenrollnumer(::google::protobuf::uint32 value);
+
+  // optional uint32 apnBackUpNumber = 4;
+  inline bool has_apnbackupnumber() const;
+  inline void clear_apnbackupnumber();
+  static const int kApnBackUpNumberFieldNumber = 4;
+  inline ::google::protobuf::uint32 apnbackupnumber() const;
+  inline void set_apnbackupnumber(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.EnableUserMsg.Request)
+ private:
+  inline void set_has_attend();
+  inline void clear_has_attend();
+  inline void set_has_apnenableflag();
+  inline void clear_has_apnenableflag();
+  inline void set_has_apnenrollnumer();
+  inline void clear_has_apnenrollnumer();
+  inline void set_has_apnbackupnumber();
+  inline void clear_has_apnbackupnumber();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::AttendBean* attend_;
+  ::google::protobuf::uint32 apnenableflag_;
+  ::google::protobuf::uint32 apnenrollnumer_;
+  ::google::protobuf::uint32 apnbackupnumber_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static EnableUserMsg_Request* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EnableUserMsg_Response : public ::google::protobuf::Message {
+ public:
+  EnableUserMsg_Response();
+  virtual ~EnableUserMsg_Response();
+
+  EnableUserMsg_Response(const EnableUserMsg_Response& from);
+
+  inline EnableUserMsg_Response& operator=(const EnableUserMsg_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EnableUserMsg_Response& default_instance();
+
+  void Swap(EnableUserMsg_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  EnableUserMsg_Response* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EnableUserMsg_Response& from);
+  void MergeFrom(const EnableUserMsg_Response& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 rescode = 1;
+  inline bool has_rescode() const;
+  inline void clear_rescode();
+  static const int kRescodeFieldNumber = 1;
+  inline ::google::protobuf::uint32 rescode() const;
+  inline void set_rescode(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.EnableUserMsg.Response)
+ private:
+  inline void set_has_rescode();
+  inline void clear_has_rescode();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 rescode_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static EnableUserMsg_Response* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EnableUserMsg : public ::google::protobuf::Message {
+ public:
+  EnableUserMsg();
+  virtual ~EnableUserMsg();
+
+  EnableUserMsg(const EnableUserMsg& from);
+
+  inline EnableUserMsg& operator=(const EnableUserMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EnableUserMsg& default_instance();
+
+  void Swap(EnableUserMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  EnableUserMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EnableUserMsg& from);
+  void MergeFrom(const EnableUserMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef EnableUserMsg_Request Request;
+  typedef EnableUserMsg_Response Response;
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.EnableUserMsg.Request request = 1;
+  inline bool has_request() const;
+  inline void clear_request();
+  static const int kRequestFieldNumber = 1;
+  inline const ::com::spplus::buff::EnableUserMsg_Request& request() const;
+  inline ::com::spplus::buff::EnableUserMsg_Request* mutable_request();
+  inline ::com::spplus::buff::EnableUserMsg_Request* release_request();
+  inline void set_allocated_request(::com::spplus::buff::EnableUserMsg_Request* request);
+
+  // optional .com.spplus.buff.EnableUserMsg.Response response = 2;
+  inline bool has_response() const;
+  inline void clear_response();
+  static const int kResponseFieldNumber = 2;
+  inline const ::com::spplus::buff::EnableUserMsg_Response& response() const;
+  inline ::com::spplus::buff::EnableUserMsg_Response* mutable_response();
+  inline ::com::spplus::buff::EnableUserMsg_Response* release_response();
+  inline void set_allocated_response(::com::spplus::buff::EnableUserMsg_Response* response);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.EnableUserMsg)
+ private:
+  inline void set_has_request();
+  inline void clear_has_request();
+  inline void set_has_response();
+  inline void clear_has_response();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::EnableUserMsg_Request* request_;
+  ::com::spplus::buff::EnableUserMsg_Response* response_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static EnableUserMsg* default_instance_;
+};
 // ===================================================================
 
 
@@ -1501,26 +2077,26 @@ inline void UserBean::set_apnmechineprivilege(::google::protobuf::int64 value) {
   apnmechineprivilege_ = value;
 }
 
-// optional int64 apnEnableFlage = 4;
-inline bool UserBean::has_apnenableflage() const {
+// optional int64 apnEnableFlag = 4;
+inline bool UserBean::has_apnenableflag() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void UserBean::set_has_apnenableflage() {
+inline void UserBean::set_has_apnenableflag() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void UserBean::clear_has_apnenableflage() {
+inline void UserBean::clear_has_apnenableflag() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void UserBean::clear_apnenableflage() {
-  apnenableflage_ = GOOGLE_LONGLONG(0);
-  clear_has_apnenableflage();
+inline void UserBean::clear_apnenableflag() {
+  apnenableflag_ = GOOGLE_LONGLONG(0);
+  clear_has_apnenableflag();
 }
-inline ::google::protobuf::int64 UserBean::apnenableflage() const {
-  return apnenableflage_;
+inline ::google::protobuf::int64 UserBean::apnenableflag() const {
+  return apnenableflag_;
 }
-inline void UserBean::set_apnenableflage(::google::protobuf::int64 value) {
-  set_has_apnenableflage();
-  apnenableflage_ = value;
+inline void UserBean::set_apnenableflag(::google::protobuf::int64 value) {
+  set_has_apnenableflag();
+  apnenableflag_ = value;
 }
 
 // optional int64 apnEnrollData = 5;
@@ -2265,6 +2841,390 @@ inline ::com::spplus::buff::GetGeneralLogDataMsg_Response* GetGeneralLogDataMsg:
   return temp;
 }
 inline void GetGeneralLogDataMsg::set_allocated_response(::com::spplus::buff::GetGeneralLogDataMsg_Response* response) {
+  delete response_;
+  response_ = response;
+  if (response) {
+    set_has_response();
+  } else {
+    clear_has_response();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// SetDoorStatusMsg_Request
+
+// optional .com.spplus.buff.AttendBean attend = 1;
+inline bool SetDoorStatusMsg_Request::has_attend() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SetDoorStatusMsg_Request::set_has_attend() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SetDoorStatusMsg_Request::clear_has_attend() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SetDoorStatusMsg_Request::clear_attend() {
+  if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
+  clear_has_attend();
+}
+inline const ::com::spplus::buff::AttendBean& SetDoorStatusMsg_Request::attend() const {
+  return attend_ != NULL ? *attend_ : *default_instance_->attend_;
+}
+inline ::com::spplus::buff::AttendBean* SetDoorStatusMsg_Request::mutable_attend() {
+  set_has_attend();
+  if (attend_ == NULL) attend_ = new ::com::spplus::buff::AttendBean;
+  return attend_;
+}
+inline ::com::spplus::buff::AttendBean* SetDoorStatusMsg_Request::release_attend() {
+  clear_has_attend();
+  ::com::spplus::buff::AttendBean* temp = attend_;
+  attend_ = NULL;
+  return temp;
+}
+inline void SetDoorStatusMsg_Request::set_allocated_attend(::com::spplus::buff::AttendBean* attend) {
+  delete attend_;
+  attend_ = attend;
+  if (attend) {
+    set_has_attend();
+  } else {
+    clear_has_attend();
+  }
+}
+
+// optional uint32 status = 2;
+inline bool SetDoorStatusMsg_Request::has_status() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SetDoorStatusMsg_Request::set_has_status() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SetDoorStatusMsg_Request::clear_has_status() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SetDoorStatusMsg_Request::clear_status() {
+  status_ = 0u;
+  clear_has_status();
+}
+inline ::google::protobuf::uint32 SetDoorStatusMsg_Request::status() const {
+  return status_;
+}
+inline void SetDoorStatusMsg_Request::set_status(::google::protobuf::uint32 value) {
+  set_has_status();
+  status_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetDoorStatusMsg_Response
+
+// optional uint32 rescode = 1;
+inline bool SetDoorStatusMsg_Response::has_rescode() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SetDoorStatusMsg_Response::set_has_rescode() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SetDoorStatusMsg_Response::clear_has_rescode() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SetDoorStatusMsg_Response::clear_rescode() {
+  rescode_ = 0u;
+  clear_has_rescode();
+}
+inline ::google::protobuf::uint32 SetDoorStatusMsg_Response::rescode() const {
+  return rescode_;
+}
+inline void SetDoorStatusMsg_Response::set_rescode(::google::protobuf::uint32 value) {
+  set_has_rescode();
+  rescode_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetDoorStatusMsg
+
+// optional .com.spplus.buff.SetDoorStatusMsg.Request request = 1;
+inline bool SetDoorStatusMsg::has_request() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SetDoorStatusMsg::set_has_request() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SetDoorStatusMsg::clear_has_request() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SetDoorStatusMsg::clear_request() {
+  if (request_ != NULL) request_->::com::spplus::buff::SetDoorStatusMsg_Request::Clear();
+  clear_has_request();
+}
+inline const ::com::spplus::buff::SetDoorStatusMsg_Request& SetDoorStatusMsg::request() const {
+  return request_ != NULL ? *request_ : *default_instance_->request_;
+}
+inline ::com::spplus::buff::SetDoorStatusMsg_Request* SetDoorStatusMsg::mutable_request() {
+  set_has_request();
+  if (request_ == NULL) request_ = new ::com::spplus::buff::SetDoorStatusMsg_Request;
+  return request_;
+}
+inline ::com::spplus::buff::SetDoorStatusMsg_Request* SetDoorStatusMsg::release_request() {
+  clear_has_request();
+  ::com::spplus::buff::SetDoorStatusMsg_Request* temp = request_;
+  request_ = NULL;
+  return temp;
+}
+inline void SetDoorStatusMsg::set_allocated_request(::com::spplus::buff::SetDoorStatusMsg_Request* request) {
+  delete request_;
+  request_ = request;
+  if (request) {
+    set_has_request();
+  } else {
+    clear_has_request();
+  }
+}
+
+// optional .com.spplus.buff.SetDoorStatusMsg.Response response = 2;
+inline bool SetDoorStatusMsg::has_response() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SetDoorStatusMsg::set_has_response() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SetDoorStatusMsg::clear_has_response() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SetDoorStatusMsg::clear_response() {
+  if (response_ != NULL) response_->::com::spplus::buff::SetDoorStatusMsg_Response::Clear();
+  clear_has_response();
+}
+inline const ::com::spplus::buff::SetDoorStatusMsg_Response& SetDoorStatusMsg::response() const {
+  return response_ != NULL ? *response_ : *default_instance_->response_;
+}
+inline ::com::spplus::buff::SetDoorStatusMsg_Response* SetDoorStatusMsg::mutable_response() {
+  set_has_response();
+  if (response_ == NULL) response_ = new ::com::spplus::buff::SetDoorStatusMsg_Response;
+  return response_;
+}
+inline ::com::spplus::buff::SetDoorStatusMsg_Response* SetDoorStatusMsg::release_response() {
+  clear_has_response();
+  ::com::spplus::buff::SetDoorStatusMsg_Response* temp = response_;
+  response_ = NULL;
+  return temp;
+}
+inline void SetDoorStatusMsg::set_allocated_response(::com::spplus::buff::SetDoorStatusMsg_Response* response) {
+  delete response_;
+  response_ = response;
+  if (response) {
+    set_has_response();
+  } else {
+    clear_has_response();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// EnableUserMsg_Request
+
+// optional .com.spplus.buff.AttendBean attend = 1;
+inline bool EnableUserMsg_Request::has_attend() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EnableUserMsg_Request::set_has_attend() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EnableUserMsg_Request::clear_has_attend() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EnableUserMsg_Request::clear_attend() {
+  if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
+  clear_has_attend();
+}
+inline const ::com::spplus::buff::AttendBean& EnableUserMsg_Request::attend() const {
+  return attend_ != NULL ? *attend_ : *default_instance_->attend_;
+}
+inline ::com::spplus::buff::AttendBean* EnableUserMsg_Request::mutable_attend() {
+  set_has_attend();
+  if (attend_ == NULL) attend_ = new ::com::spplus::buff::AttendBean;
+  return attend_;
+}
+inline ::com::spplus::buff::AttendBean* EnableUserMsg_Request::release_attend() {
+  clear_has_attend();
+  ::com::spplus::buff::AttendBean* temp = attend_;
+  attend_ = NULL;
+  return temp;
+}
+inline void EnableUserMsg_Request::set_allocated_attend(::com::spplus::buff::AttendBean* attend) {
+  delete attend_;
+  attend_ = attend;
+  if (attend) {
+    set_has_attend();
+  } else {
+    clear_has_attend();
+  }
+}
+
+// optional uint32 apnEnableFlag = 2;
+inline bool EnableUserMsg_Request::has_apnenableflag() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EnableUserMsg_Request::set_has_apnenableflag() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EnableUserMsg_Request::clear_has_apnenableflag() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EnableUserMsg_Request::clear_apnenableflag() {
+  apnenableflag_ = 0u;
+  clear_has_apnenableflag();
+}
+inline ::google::protobuf::uint32 EnableUserMsg_Request::apnenableflag() const {
+  return apnenableflag_;
+}
+inline void EnableUserMsg_Request::set_apnenableflag(::google::protobuf::uint32 value) {
+  set_has_apnenableflag();
+  apnenableflag_ = value;
+}
+
+// optional uint32 apnEnrollNumer = 3;
+inline bool EnableUserMsg_Request::has_apnenrollnumer() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void EnableUserMsg_Request::set_has_apnenrollnumer() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void EnableUserMsg_Request::clear_has_apnenrollnumer() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void EnableUserMsg_Request::clear_apnenrollnumer() {
+  apnenrollnumer_ = 0u;
+  clear_has_apnenrollnumer();
+}
+inline ::google::protobuf::uint32 EnableUserMsg_Request::apnenrollnumer() const {
+  return apnenrollnumer_;
+}
+inline void EnableUserMsg_Request::set_apnenrollnumer(::google::protobuf::uint32 value) {
+  set_has_apnenrollnumer();
+  apnenrollnumer_ = value;
+}
+
+// optional uint32 apnBackUpNumber = 4;
+inline bool EnableUserMsg_Request::has_apnbackupnumber() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void EnableUserMsg_Request::set_has_apnbackupnumber() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void EnableUserMsg_Request::clear_has_apnbackupnumber() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void EnableUserMsg_Request::clear_apnbackupnumber() {
+  apnbackupnumber_ = 0u;
+  clear_has_apnbackupnumber();
+}
+inline ::google::protobuf::uint32 EnableUserMsg_Request::apnbackupnumber() const {
+  return apnbackupnumber_;
+}
+inline void EnableUserMsg_Request::set_apnbackupnumber(::google::protobuf::uint32 value) {
+  set_has_apnbackupnumber();
+  apnbackupnumber_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EnableUserMsg_Response
+
+// optional uint32 rescode = 1;
+inline bool EnableUserMsg_Response::has_rescode() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EnableUserMsg_Response::set_has_rescode() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EnableUserMsg_Response::clear_has_rescode() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EnableUserMsg_Response::clear_rescode() {
+  rescode_ = 0u;
+  clear_has_rescode();
+}
+inline ::google::protobuf::uint32 EnableUserMsg_Response::rescode() const {
+  return rescode_;
+}
+inline void EnableUserMsg_Response::set_rescode(::google::protobuf::uint32 value) {
+  set_has_rescode();
+  rescode_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EnableUserMsg
+
+// optional .com.spplus.buff.EnableUserMsg.Request request = 1;
+inline bool EnableUserMsg::has_request() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EnableUserMsg::set_has_request() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EnableUserMsg::clear_has_request() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EnableUserMsg::clear_request() {
+  if (request_ != NULL) request_->::com::spplus::buff::EnableUserMsg_Request::Clear();
+  clear_has_request();
+}
+inline const ::com::spplus::buff::EnableUserMsg_Request& EnableUserMsg::request() const {
+  return request_ != NULL ? *request_ : *default_instance_->request_;
+}
+inline ::com::spplus::buff::EnableUserMsg_Request* EnableUserMsg::mutable_request() {
+  set_has_request();
+  if (request_ == NULL) request_ = new ::com::spplus::buff::EnableUserMsg_Request;
+  return request_;
+}
+inline ::com::spplus::buff::EnableUserMsg_Request* EnableUserMsg::release_request() {
+  clear_has_request();
+  ::com::spplus::buff::EnableUserMsg_Request* temp = request_;
+  request_ = NULL;
+  return temp;
+}
+inline void EnableUserMsg::set_allocated_request(::com::spplus::buff::EnableUserMsg_Request* request) {
+  delete request_;
+  request_ = request;
+  if (request) {
+    set_has_request();
+  } else {
+    clear_has_request();
+  }
+}
+
+// optional .com.spplus.buff.EnableUserMsg.Response response = 2;
+inline bool EnableUserMsg::has_response() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EnableUserMsg::set_has_response() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EnableUserMsg::clear_has_response() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EnableUserMsg::clear_response() {
+  if (response_ != NULL) response_->::com::spplus::buff::EnableUserMsg_Response::Clear();
+  clear_has_response();
+}
+inline const ::com::spplus::buff::EnableUserMsg_Response& EnableUserMsg::response() const {
+  return response_ != NULL ? *response_ : *default_instance_->response_;
+}
+inline ::com::spplus::buff::EnableUserMsg_Response* EnableUserMsg::mutable_response() {
+  set_has_response();
+  if (response_ == NULL) response_ = new ::com::spplus::buff::EnableUserMsg_Response;
+  return response_;
+}
+inline ::com::spplus::buff::EnableUserMsg_Response* EnableUserMsg::release_response() {
+  clear_has_response();
+  ::com::spplus::buff::EnableUserMsg_Response* temp = response_;
+  response_ = NULL;
+  return temp;
+}
+inline void EnableUserMsg::set_allocated_response(::com::spplus::buff::EnableUserMsg_Response* response) {
   delete response_;
   response_ = response;
   if (response) {

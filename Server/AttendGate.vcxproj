@@ -73,6 +73,8 @@
     <ClCompile Include="bizbase.cpp" />
     <ClCompile Include="clienthandler.cpp" />
     <ClCompile Include="clientmgr.cpp" />
+    <ClCompile Include="cmdbase.cpp" />
+    <ClCompile Include="cmdimpl.cpp" />
     <ClCompile Include="comutils.cpp" />
     <ClCompile Include="confmgr.cpp" />
     <ClCompile Include="logger.cpp" />
@@ -89,6 +91,7 @@
     <ClInclude Include="clienthandler.h" />
     <ClInclude Include="clientmgr.h" />
     <ClInclude Include="cmdbase.h" />
+    <ClInclude Include="cmdimpl.h" />
     <ClInclude Include="comutils.h" />
     <ClInclude Include="confmgr.h" />
     <ClInclude Include="defines.h" />

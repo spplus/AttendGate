@@ -12,8 +12,8 @@
 
 
 
-// 获取全部用户
-#define				CMD_GetAllUserID				1000
+// 获取用户信息
+#define				CMD_GetErollData				1000
 
 // 添加用户到打卡机
 #define				CMD_PutErollData				1001
@@ -26,6 +26,9 @@
 
 // 获取用户打开记录
 #define				CMD_GetGeneralLogData			1004
+
+// 远程控制门禁
+#define				CMD_SetDoorStatus				1005
 
 
 #endif

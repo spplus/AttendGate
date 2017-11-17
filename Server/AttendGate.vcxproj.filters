@@ -69,6 +69,12 @@
     <ClCompile Include="attendmgr.cpp">
       <Filter>attend</Filter>
     </ClCompile>
+    <ClCompile Include="cmdbase.cpp">
+      <Filter>biz</Filter>
+    </ClCompile>
+    <ClCompile Include="cmdimpl.cpp">
+      <Filter>biz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h">
@@ -115,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="attendmgr.h">
       <Filter>attend</Filter>
+    </ClInclude>
+    <ClInclude Include="cmdimpl.h">
+      <Filter>biz</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ message UserBean
     optional int64 apnEnrollNumer  		= 1;
     optional int64 apnBackUpNumber 		= 2;
 	optional int64 apnMechinePrivilege 	= 3;
-    optional int64 apnEnableFlage 		= 4; 
+    optional int64 apnEnableFlag		= 4; 
 	optional int64 apnEnrollData 		= 5; 
 	optional int64 apnPassWord	 		= 6;
 
@@ -85,3 +85,39 @@ message GetGeneralLogDataMsg
   
 }
 
+// 操作门的状态
+message SetDoorStatusMsg
+{ 
+	//请求体定义
+	message Request {
+		optional AttendBean	attend					= 1;		// 打卡机信息	
+		optional uint32		status					= 2;		// 门状态 1:开门，2：关门	
+  	}
+  	//响应体定义
+	message Response {
+		optional uint32		rescode			= 1;	// 0 成功，其他失败
+  	}
+	optional Request 	request 	= 1;
+  	optional Response 	response 	= 2;
+  
+}
+
+// 用户状态控制
+message EnableUserMsg
+{ 
+	//请求体定义
+	message Request {
+		optional AttendBean	attend					= 1;		// 打卡机信息	
+		optional uint32		apnEnableFlag			= 2;		// 状态 1:启用，2：停用	
+		optional uint32		apnEnrollNumer			= 3;		// 用户ID
+		optional uint32		apnBackUpNumber			= 4;
+		
+  	}
+  	//响应体定义
+	message Response {
+		optional uint32		rescode			= 1;	// 0 成功，其他失败
+  	}
+	optional Request 	request 	= 1;
+  	optional Response 	response 	= 2;
+  
+}
