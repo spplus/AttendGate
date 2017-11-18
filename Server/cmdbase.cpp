@@ -20,4 +20,7 @@ int CmdBase::connectNet(long mechineId,const char* ipaddr,int port)
 void CmdBase::disConnect(int connectId)
 {
 	FK_DisConnect(m_connectId);
+
+	LOG->message("¶Ï¿ªÁ¬½Ó");
+
 }

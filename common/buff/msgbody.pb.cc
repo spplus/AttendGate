@@ -76,6 +76,15 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* EnableUserMsg_Response_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   EnableUserMsg_Response_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DeleteErollDataMsg_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DeleteErollDataMsg_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DeleteErollDataMsg_Request_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DeleteErollDataMsg_Request_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DeleteErollDataMsg_Response_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DeleteErollDataMsg_Response_reflection_ = NULL;
 
 }  // namespace
 
@@ -207,8 +216,9 @@ void protobuf_AssignDesc_msgbody_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetEnrollDataMsg));
   GetEnrollDataMsg_Request_descriptor_ = GetEnrollDataMsg_descriptor_->nested_type(0);
-  static const int GetEnrollDataMsg_Request_offsets_[2] = {
+  static const int GetEnrollDataMsg_Request_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEnrollDataMsg_Request, apnenrollnumer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEnrollDataMsg_Request, apnbackupnumber_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEnrollDataMsg_Request, attend_),
   };
   GetEnrollDataMsg_Request_reflection_ =
@@ -255,8 +265,9 @@ void protobuf_AssignDesc_msgbody_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetGeneralLogDataMsg));
   GetGeneralLogDataMsg_Request_descriptor_ = GetGeneralLogDataMsg_descriptor_->nested_type(0);
-  static const int GetGeneralLogDataMsg_Request_offsets_[1] = {
+  static const int GetGeneralLogDataMsg_Request_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetGeneralLogDataMsg_Request, attend_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetGeneralLogDataMsg_Request, readmask_),
   };
   GetGeneralLogDataMsg_Request_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -381,6 +392,54 @@ void protobuf_AssignDesc_msgbody_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(EnableUserMsg_Response));
+  DeleteErollDataMsg_descriptor_ = file->message_type(8);
+  static const int DeleteErollDataMsg_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg, request_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg, response_),
+  };
+  DeleteErollDataMsg_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DeleteErollDataMsg_descriptor_,
+      DeleteErollDataMsg::default_instance_,
+      DeleteErollDataMsg_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DeleteErollDataMsg));
+  DeleteErollDataMsg_Request_descriptor_ = DeleteErollDataMsg_descriptor_->nested_type(0);
+  static const int DeleteErollDataMsg_Request_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Request, attend_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Request, apnenrollnumer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Request, apnbackupnumber_),
+  };
+  DeleteErollDataMsg_Request_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DeleteErollDataMsg_Request_descriptor_,
+      DeleteErollDataMsg_Request::default_instance_,
+      DeleteErollDataMsg_Request_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Request, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Request, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DeleteErollDataMsg_Request));
+  DeleteErollDataMsg_Response_descriptor_ = DeleteErollDataMsg_descriptor_->nested_type(1);
+  static const int DeleteErollDataMsg_Response_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Response, rescode_),
+  };
+  DeleteErollDataMsg_Response_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DeleteErollDataMsg_Response_descriptor_,
+      DeleteErollDataMsg_Response::default_instance_,
+      DeleteErollDataMsg_Response_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Response, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeleteErollDataMsg_Response, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DeleteErollDataMsg_Response));
 }
 
 namespace {
@@ -429,6 +488,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
     EnableUserMsg_Request_descriptor_, &EnableUserMsg_Request::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     EnableUserMsg_Response_descriptor_, &EnableUserMsg_Response::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DeleteErollDataMsg_descriptor_, &DeleteErollDataMsg::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DeleteErollDataMsg_Request_descriptor_, &DeleteErollDataMsg_Request::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DeleteErollDataMsg_Response_descriptor_, &DeleteErollDataMsg_Response::default_instance());
 }
 
 }  // namespace
@@ -470,6 +535,12 @@ void protobuf_ShutdownFile_msgbody_2eproto() {
   delete EnableUserMsg_Request_reflection_;
   delete EnableUserMsg_Response::default_instance_;
   delete EnableUserMsg_Response_reflection_;
+  delete DeleteErollDataMsg::default_instance_;
+  delete DeleteErollDataMsg_reflection_;
+  delete DeleteErollDataMsg_Request::default_instance_;
+  delete DeleteErollDataMsg_Request_reflection_;
+  delete DeleteErollDataMsg_Response::default_instance_;
+  delete DeleteErollDataMsg_Response_reflection_;
 }
 
 void protobuf_AddDesc_msgbody_2eproto() {
@@ -485,45 +556,53 @@ void protobuf_AddDesc_msgbody_2eproto() {
     "\001(\003\022\020\n\010nLicense\030\005 \001(\003\"\233\001\n\010UserBean\022\026\n\016ap"
     "nEnrollNumer\030\001 \001(\003\022\027\n\017apnBackUpNumber\030\002 "
     "\001(\003\022\033\n\023apnMechinePrivilege\030\003 \001(\003\022\025\n\rapnE"
-    "nableFlag\030\004 \001(\003\022\025\n\rapnEnrollData\030\005 \001(\003\022\023"
+    "nableFlag\030\004 \001(\003\022\025\n\rapnEnrollData\030\005 \001(\014\022\023"
     "\n\013apnPassWord\030\006 \001(\003\"g\n\013LogDataBean\022\026\n\016ap"
     "nEnrollNumer\030\001 \001(\003\022\025\n\rapnVerifyMode\030\002 \001("
     "\003\022\024\n\014apnInOutMode\030\003 \001(\003\022\023\n\013apnDateTime\030\004"
-    " \001(\014\"\212\002\n\020PutEnrollDataMsg\022:\n\007request\030\001 \001"
+    " \001(\003\"\212\002\n\020PutEnrollDataMsg\022:\n\007request\030\001 \001"
     "(\0132).com.spplus.buff.PutEnrollDataMsg.Re"
     "quest\022<\n\010response\030\002 \001(\0132*.com.spplus.buf"
     "f.PutEnrollDataMsg.Response\032_\n\007Request\022\'"
     "\n\004user\030\001 \001(\0132\031.com.spplus.buff.UserBean\022"
     "+\n\006attend\030\002 \001(\0132\033.com.spplus.buff.Attend"
-    "Bean\032\033\n\010Response\022\017\n\007rescode\030\001 \001(\r\"\242\002\n\020Ge"
+    "Bean\032\033\n\010Response\022\017\n\007rescode\030\001 \001(\r\"\273\002\n\020Ge"
     "tEnrollDataMsg\022:\n\007request\030\001 \001(\0132).com.sp"
     "plus.buff.GetEnrollDataMsg.Request\022<\n\010re"
     "sponse\030\002 \001(\0132*.com.spplus.buff.GetEnroll"
-    "DataMsg.Response\032N\n\007Request\022\026\n\016apnEnroll"
-    "Numer\030\001 \001(\003\022+\n\006attend\030\002 \001(\0132\033.com.spplus"
-    ".buff.AttendBean\032D\n\010Response\022\'\n\004user\030\001 \001"
-    "(\0132\031.com.spplus.buff.UserBean\022\017\n\007rescode"
-    "\030\002 \001(\r\"\233\002\n\024GetGeneralLogDataMsg\022>\n\007reque"
-    "st\030\001 \001(\0132-.com.spplus.buff.GetGeneralLog"
-    "DataMsg.Request\022@\n\010response\030\002 \001(\0132..com."
-    "spplus.buff.GetGeneralLogDataMsg.Respons"
-    "e\0326\n\007Request\022+\n\006attend\030\001 \001(\0132\033.com.spplu"
-    "s.buff.AttendBean\032I\n\010Response\022,\n\006logrec\030"
-    "\001 \003(\0132\034.com.spplus.buff.LogDataBean\022\017\n\007r"
-    "escode\030\002 \001(\r\"\361\001\n\020SetDoorStatusMsg\022:\n\007req"
-    "uest\030\001 \001(\0132).com.spplus.buff.SetDoorStat"
-    "usMsg.Request\022<\n\010response\030\002 \001(\0132*.com.sp"
-    "plus.buff.SetDoorStatusMsg.Response\032F\n\007R"
-    "equest\022+\n\006attend\030\001 \001(\0132\033.com.spplus.buff"
-    ".AttendBean\022\016\n\006status\030\002 \001(\r\032\033\n\010Response\022"
-    "\017\n\007rescode\030\001 \001(\r\"\240\002\n\rEnableUserMsg\0227\n\007re"
-    "quest\030\001 \001(\0132&.com.spplus.buff.EnableUser"
-    "Msg.Request\0229\n\010response\030\002 \001(\0132\'.com.sppl"
-    "us.buff.EnableUserMsg.Response\032~\n\007Reques"
-    "t\022+\n\006attend\030\001 \001(\0132\033.com.spplus.buff.Atte"
-    "ndBean\022\025\n\rapnEnableFlag\030\002 \001(\r\022\026\n\016apnEnro"
-    "llNumer\030\003 \001(\r\022\027\n\017apnBackUpNumber\030\004 \001(\r\032\033"
-    "\n\010Response\022\017\n\007rescode\030\001 \001(\r", 1787);
+    "DataMsg.Response\032g\n\007Request\022\026\n\016apnEnroll"
+    "Numer\030\001 \001(\003\022\027\n\017apnBackUpNumber\030\002 \001(\003\022+\n\006"
+    "attend\030\003 \001(\0132\033.com.spplus.buff.AttendBea"
+    "n\032D\n\010Response\022\'\n\004user\030\001 \001(\0132\031.com.spplus"
+    ".buff.UserBean\022\017\n\007rescode\030\002 \001(\r\"\255\002\n\024GetG"
+    "eneralLogDataMsg\022>\n\007request\030\001 \001(\0132-.com."
+    "spplus.buff.GetGeneralLogDataMsg.Request"
+    "\022@\n\010response\030\002 \001(\0132..com.spplus.buff.Get"
+    "GeneralLogDataMsg.Response\032H\n\007Request\022+\n"
+    "\006attend\030\001 \001(\0132\033.com.spplus.buff.AttendBe"
+    "an\022\020\n\010readmask\030\002 \001(\r\032I\n\010Response\022,\n\006logr"
+    "ec\030\001 \003(\0132\034.com.spplus.buff.LogDataBean\022\017"
+    "\n\007rescode\030\002 \001(\r\"\361\001\n\020SetDoorStatusMsg\022:\n\007"
+    "request\030\001 \001(\0132).com.spplus.buff.SetDoorS"
+    "tatusMsg.Request\022<\n\010response\030\002 \001(\0132*.com"
+    ".spplus.buff.SetDoorStatusMsg.Response\032F"
+    "\n\007Request\022+\n\006attend\030\001 \001(\0132\033.com.spplus.b"
+    "uff.AttendBean\022\016\n\006status\030\002 \001(\r\032\033\n\010Respon"
+    "se\022\017\n\007rescode\030\001 \001(\r\"\240\002\n\rEnableUserMsg\0227\n"
+    "\007request\030\001 \001(\0132&.com.spplus.buff.EnableU"
+    "serMsg.Request\0229\n\010response\030\002 \001(\0132\'.com.s"
+    "pplus.buff.EnableUserMsg.Response\032~\n\007Req"
+    "uest\022+\n\006attend\030\001 \001(\0132\033.com.spplus.buff.A"
+    "ttendBean\022\025\n\rapnEnableFlag\030\002 \001(\r\022\026\n\016apnE"
+    "nrollNumer\030\003 \001(\r\022\027\n\017apnBackUpNumber\030\004 \001("
+    "\r\032\033\n\010Response\022\017\n\007rescode\030\001 \001(\r\"\230\002\n\022Delet"
+    "eErollDataMsg\022<\n\007request\030\001 \001(\0132+.com.spp"
+    "lus.buff.DeleteErollDataMsg.Request\022>\n\010r"
+    "esponse\030\002 \001(\0132,.com.spplus.buff.DeleteEr"
+    "ollDataMsg.Response\032g\n\007Request\022+\n\006attend"
+    "\030\001 \001(\0132\033.com.spplus.buff.AttendBean\022\026\n\016a"
+    "pnEnrollNumer\030\002 \001(\r\022\027\n\017apnBackUpNumber\030\003"
+    " \001(\r\032\033\n\010Response\022\017\n\007rescode\030\001 \001(\r", 2113);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msgbody.proto", &protobuf_RegisterTypes);
   AttendBean::default_instance_ = new AttendBean();
@@ -544,6 +623,9 @@ void protobuf_AddDesc_msgbody_2eproto() {
   EnableUserMsg::default_instance_ = new EnableUserMsg();
   EnableUserMsg_Request::default_instance_ = new EnableUserMsg_Request();
   EnableUserMsg_Response::default_instance_ = new EnableUserMsg_Response();
+  DeleteErollDataMsg::default_instance_ = new DeleteErollDataMsg();
+  DeleteErollDataMsg_Request::default_instance_ = new DeleteErollDataMsg_Request();
+  DeleteErollDataMsg_Response::default_instance_ = new DeleteErollDataMsg_Response();
   AttendBean::default_instance_->InitAsDefaultInstance();
   UserBean::default_instance_->InitAsDefaultInstance();
   LogDataBean::default_instance_->InitAsDefaultInstance();
@@ -562,6 +644,9 @@ void protobuf_AddDesc_msgbody_2eproto() {
   EnableUserMsg::default_instance_->InitAsDefaultInstance();
   EnableUserMsg_Request::default_instance_->InitAsDefaultInstance();
   EnableUserMsg_Response::default_instance_->InitAsDefaultInstance();
+  DeleteErollDataMsg::default_instance_->InitAsDefaultInstance();
+  DeleteErollDataMsg_Request::default_instance_->InitAsDefaultInstance();
+  DeleteErollDataMsg_Response::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msgbody_2eproto);
 }
 
@@ -979,7 +1064,7 @@ void UserBean::SharedCtor() {
   apnbackupnumber_ = GOOGLE_LONGLONG(0);
   apnmechineprivilege_ = GOOGLE_LONGLONG(0);
   apnenableflag_ = GOOGLE_LONGLONG(0);
-  apnenrolldata_ = GOOGLE_LONGLONG(0);
+  apnenrolldata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   apnpassword_ = GOOGLE_LONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -989,6 +1074,9 @@ UserBean::~UserBean() {
 }
 
 void UserBean::SharedDtor() {
+  if (apnenrolldata_ != &::google::protobuf::internal::kEmptyString) {
+    delete apnenrolldata_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -1020,7 +1108,11 @@ void UserBean::Clear() {
     apnbackupnumber_ = GOOGLE_LONGLONG(0);
     apnmechineprivilege_ = GOOGLE_LONGLONG(0);
     apnenableflag_ = GOOGLE_LONGLONG(0);
-    apnenrolldata_ = GOOGLE_LONGLONG(0);
+    if (has_apnenrolldata()) {
+      if (apnenrolldata_ != &::google::protobuf::internal::kEmptyString) {
+        apnenrolldata_->clear();
+      }
+    }
     apnpassword_ = GOOGLE_LONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1092,19 +1184,17 @@ bool UserBean::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_apnEnrollData;
+        if (input->ExpectTag(42)) goto parse_apnEnrollData;
         break;
       }
 
-      // optional int64 apnEnrollData = 5;
+      // optional bytes apnEnrollData = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_apnEnrollData:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &apnenrolldata_)));
-          set_has_apnenrolldata();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_apnenrolldata()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1166,9 +1256,10 @@ void UserBean::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->apnenableflag(), output);
   }
 
-  // optional int64 apnEnrollData = 5;
+  // optional bytes apnEnrollData = 5;
   if (has_apnenrolldata()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(5, this->apnenrolldata(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      5, this->apnenrolldata(), output);
   }
 
   // optional int64 apnPassWord = 6;
@@ -1204,9 +1295,11 @@ void UserBean::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->apnenableflag(), target);
   }
 
-  // optional int64 apnEnrollData = 5;
+  // optional bytes apnEnrollData = 5;
   if (has_apnenrolldata()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(5, this->apnenrolldata(), target);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        5, this->apnenrolldata(), target);
   }
 
   // optional int64 apnPassWord = 6;
@@ -1253,10 +1346,10 @@ int UserBean::ByteSize() const {
           this->apnenableflag());
     }
 
-    // optional int64 apnEnrollData = 5;
+    // optional bytes apnEnrollData = 5;
     if (has_apnenrolldata()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->apnenrolldata());
     }
 
@@ -1384,7 +1477,7 @@ void LogDataBean::SharedCtor() {
   apnenrollnumer_ = GOOGLE_LONGLONG(0);
   apnverifymode_ = GOOGLE_LONGLONG(0);
   apninoutmode_ = GOOGLE_LONGLONG(0);
-  apndatetime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  apndatetime_ = GOOGLE_LONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1393,9 +1486,6 @@ LogDataBean::~LogDataBean() {
 }
 
 void LogDataBean::SharedDtor() {
-  if (apndatetime_ != &::google::protobuf::internal::kEmptyString) {
-    delete apndatetime_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -1426,11 +1516,7 @@ void LogDataBean::Clear() {
     apnenrollnumer_ = GOOGLE_LONGLONG(0);
     apnverifymode_ = GOOGLE_LONGLONG(0);
     apninoutmode_ = GOOGLE_LONGLONG(0);
-    if (has_apndatetime()) {
-      if (apndatetime_ != &::google::protobuf::internal::kEmptyString) {
-        apndatetime_->clear();
-      }
-    }
+    apndatetime_ = GOOGLE_LONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1485,17 +1571,19 @@ bool LogDataBean::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_apnDateTime;
+        if (input->ExpectTag(32)) goto parse_apnDateTime;
         break;
       }
 
-      // optional bytes apnDateTime = 4;
+      // optional int64 apnDateTime = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_apnDateTime:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_apndatetime()));
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &apndatetime_)));
+          set_has_apndatetime();
         } else {
           goto handle_uninterpreted;
         }
@@ -1536,10 +1624,9 @@ void LogDataBean::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->apninoutmode(), output);
   }
 
-  // optional bytes apnDateTime = 4;
+  // optional int64 apnDateTime = 4;
   if (has_apndatetime()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      4, this->apndatetime(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->apndatetime(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1565,11 +1652,9 @@ void LogDataBean::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->apninoutmode(), target);
   }
 
-  // optional bytes apnDateTime = 4;
+  // optional int64 apnDateTime = 4;
   if (has_apndatetime()) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        4, this->apndatetime(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->apndatetime(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1604,10 +1689,10 @@ int LogDataBean::ByteSize() const {
           this->apninoutmode());
     }
 
-    // optional bytes apnDateTime = 4;
+    // optional int64 apnDateTime = 4;
     if (has_apndatetime()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->apndatetime());
     }
 
@@ -2420,6 +2505,7 @@ void PutEnrollDataMsg::Swap(PutEnrollDataMsg* other) {
 
 #ifndef _MSC_VER
 const int GetEnrollDataMsg_Request::kApnEnrollNumerFieldNumber;
+const int GetEnrollDataMsg_Request::kApnBackUpNumberFieldNumber;
 const int GetEnrollDataMsg_Request::kAttendFieldNumber;
 #endif  // !_MSC_VER
 
@@ -2441,6 +2527,7 @@ GetEnrollDataMsg_Request::GetEnrollDataMsg_Request(const GetEnrollDataMsg_Reques
 void GetEnrollDataMsg_Request::SharedCtor() {
   _cached_size_ = 0;
   apnenrollnumer_ = GOOGLE_LONGLONG(0);
+  apnbackupnumber_ = GOOGLE_LONGLONG(0);
   attend_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -2479,6 +2566,7 @@ GetEnrollDataMsg_Request* GetEnrollDataMsg_Request::New() const {
 void GetEnrollDataMsg_Request::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     apnenrollnumer_ = GOOGLE_LONGLONG(0);
+    apnbackupnumber_ = GOOGLE_LONGLONG(0);
     if (has_attend()) {
       if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
     }
@@ -2504,12 +2592,28 @@ bool GetEnrollDataMsg_Request::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_attend;
+        if (input->ExpectTag(16)) goto parse_apnBackUpNumber;
         break;
       }
 
-      // optional .com.spplus.buff.AttendBean attend = 2;
+      // optional int64 apnBackUpNumber = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_apnBackUpNumber:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &apnbackupnumber_)));
+          set_has_apnbackupnumber();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_attend;
+        break;
+      }
+
+      // optional .com.spplus.buff.AttendBean attend = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_attend:
@@ -2545,10 +2649,15 @@ void GetEnrollDataMsg_Request::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->apnenrollnumer(), output);
   }
 
-  // optional .com.spplus.buff.AttendBean attend = 2;
+  // optional int64 apnBackUpNumber = 2;
+  if (has_apnbackupnumber()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->apnbackupnumber(), output);
+  }
+
+  // optional .com.spplus.buff.AttendBean attend = 3;
   if (has_attend()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->attend(), output);
+      3, this->attend(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2564,11 +2673,16 @@ void GetEnrollDataMsg_Request::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->apnenrollnumer(), target);
   }
 
-  // optional .com.spplus.buff.AttendBean attend = 2;
+  // optional int64 apnBackUpNumber = 2;
+  if (has_apnbackupnumber()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->apnbackupnumber(), target);
+  }
+
+  // optional .com.spplus.buff.AttendBean attend = 3;
   if (has_attend()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->attend(), target);
+        3, this->attend(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2589,7 +2703,14 @@ int GetEnrollDataMsg_Request::ByteSize() const {
           this->apnenrollnumer());
     }
 
-    // optional .com.spplus.buff.AttendBean attend = 2;
+    // optional int64 apnBackUpNumber = 2;
+    if (has_apnbackupnumber()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->apnbackupnumber());
+    }
+
+    // optional .com.spplus.buff.AttendBean attend = 3;
     if (has_attend()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2626,6 +2747,9 @@ void GetEnrollDataMsg_Request::MergeFrom(const GetEnrollDataMsg_Request& from) {
     if (from.has_apnenrollnumer()) {
       set_apnenrollnumer(from.apnenrollnumer());
     }
+    if (from.has_apnbackupnumber()) {
+      set_apnbackupnumber(from.apnbackupnumber());
+    }
     if (from.has_attend()) {
       mutable_attend()->::com::spplus::buff::AttendBean::MergeFrom(from.attend());
     }
@@ -2653,6 +2777,7 @@ bool GetEnrollDataMsg_Request::IsInitialized() const {
 void GetEnrollDataMsg_Request::Swap(GetEnrollDataMsg_Request* other) {
   if (other != this) {
     std::swap(apnenrollnumer_, other->apnenrollnumer_);
+    std::swap(apnbackupnumber_, other->apnbackupnumber_);
     std::swap(attend_, other->attend_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -3184,6 +3309,7 @@ void GetEnrollDataMsg::Swap(GetEnrollDataMsg* other) {
 
 #ifndef _MSC_VER
 const int GetGeneralLogDataMsg_Request::kAttendFieldNumber;
+const int GetGeneralLogDataMsg_Request::kReadmaskFieldNumber;
 #endif  // !_MSC_VER
 
 GetGeneralLogDataMsg_Request::GetGeneralLogDataMsg_Request()
@@ -3204,6 +3330,7 @@ GetGeneralLogDataMsg_Request::GetGeneralLogDataMsg_Request(const GetGeneralLogDa
 void GetGeneralLogDataMsg_Request::SharedCtor() {
   _cached_size_ = 0;
   attend_ = NULL;
+  readmask_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3243,6 +3370,7 @@ void GetGeneralLogDataMsg_Request::Clear() {
     if (has_attend()) {
       if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
     }
+    readmask_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -3260,6 +3388,22 @@ bool GetGeneralLogDataMsg_Request::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_attend()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_readmask;
+        break;
+      }
+
+      // optional uint32 readmask = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_readmask:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &readmask_)));
+          set_has_readmask();
         } else {
           goto handle_uninterpreted;
         }
@@ -3291,6 +3435,11 @@ void GetGeneralLogDataMsg_Request::SerializeWithCachedSizes(
       1, this->attend(), output);
   }
 
+  // optional uint32 readmask = 2;
+  if (has_readmask()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->readmask(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3304,6 +3453,11 @@ void GetGeneralLogDataMsg_Request::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->attend(), target);
+  }
+
+  // optional uint32 readmask = 2;
+  if (has_readmask()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->readmask(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3322,6 +3476,13 @@ int GetGeneralLogDataMsg_Request::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->attend());
+    }
+
+    // optional uint32 readmask = 2;
+    if (has_readmask()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->readmask());
     }
 
   }
@@ -3354,6 +3515,9 @@ void GetGeneralLogDataMsg_Request::MergeFrom(const GetGeneralLogDataMsg_Request&
     if (from.has_attend()) {
       mutable_attend()->::com::spplus::buff::AttendBean::MergeFrom(from.attend());
     }
+    if (from.has_readmask()) {
+      set_readmask(from.readmask());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -3378,6 +3542,7 @@ bool GetGeneralLogDataMsg_Request::IsInitialized() const {
 void GetGeneralLogDataMsg_Request::Swap(GetGeneralLogDataMsg_Request* other) {
   if (other != this) {
     std::swap(attend_, other->attend_);
+    std::swap(readmask_, other->readmask_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -5414,6 +5579,765 @@ void EnableUserMsg::Swap(EnableUserMsg* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = EnableUserMsg_descriptor_;
   metadata.reflection = EnableUserMsg_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DeleteErollDataMsg_Request::kAttendFieldNumber;
+const int DeleteErollDataMsg_Request::kApnEnrollNumerFieldNumber;
+const int DeleteErollDataMsg_Request::kApnBackUpNumberFieldNumber;
+#endif  // !_MSC_VER
+
+DeleteErollDataMsg_Request::DeleteErollDataMsg_Request()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DeleteErollDataMsg_Request::InitAsDefaultInstance() {
+  attend_ = const_cast< ::com::spplus::buff::AttendBean*>(&::com::spplus::buff::AttendBean::default_instance());
+}
+
+DeleteErollDataMsg_Request::DeleteErollDataMsg_Request(const DeleteErollDataMsg_Request& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg_Request::SharedCtor() {
+  _cached_size_ = 0;
+  attend_ = NULL;
+  apnenrollnumer_ = 0u;
+  apnbackupnumber_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DeleteErollDataMsg_Request::~DeleteErollDataMsg_Request() {
+  SharedDtor();
+}
+
+void DeleteErollDataMsg_Request::SharedDtor() {
+  if (this != default_instance_) {
+    delete attend_;
+  }
+}
+
+void DeleteErollDataMsg_Request::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DeleteErollDataMsg_Request::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DeleteErollDataMsg_Request_descriptor_;
+}
+
+const DeleteErollDataMsg_Request& DeleteErollDataMsg_Request::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msgbody_2eproto();
+  return *default_instance_;
+}
+
+DeleteErollDataMsg_Request* DeleteErollDataMsg_Request::default_instance_ = NULL;
+
+DeleteErollDataMsg_Request* DeleteErollDataMsg_Request::New() const {
+  return new DeleteErollDataMsg_Request;
+}
+
+void DeleteErollDataMsg_Request::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_attend()) {
+      if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
+    }
+    apnenrollnumer_ = 0u;
+    apnbackupnumber_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DeleteErollDataMsg_Request::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .com.spplus.buff.AttendBean attend = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_attend()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_apnEnrollNumer;
+        break;
+      }
+
+      // optional uint32 apnEnrollNumer = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_apnEnrollNumer:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &apnenrollnumer_)));
+          set_has_apnenrollnumer();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_apnBackUpNumber;
+        break;
+      }
+
+      // optional uint32 apnBackUpNumber = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_apnBackUpNumber:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &apnbackupnumber_)));
+          set_has_apnbackupnumber();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DeleteErollDataMsg_Request::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  if (has_attend()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->attend(), output);
+  }
+
+  // optional uint32 apnEnrollNumer = 2;
+  if (has_apnenrollnumer()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->apnenrollnumer(), output);
+  }
+
+  // optional uint32 apnBackUpNumber = 3;
+  if (has_apnbackupnumber()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->apnbackupnumber(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DeleteErollDataMsg_Request::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  if (has_attend()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->attend(), target);
+  }
+
+  // optional uint32 apnEnrollNumer = 2;
+  if (has_apnenrollnumer()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->apnenrollnumer(), target);
+  }
+
+  // optional uint32 apnBackUpNumber = 3;
+  if (has_apnbackupnumber()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->apnbackupnumber(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DeleteErollDataMsg_Request::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .com.spplus.buff.AttendBean attend = 1;
+    if (has_attend()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->attend());
+    }
+
+    // optional uint32 apnEnrollNumer = 2;
+    if (has_apnenrollnumer()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->apnenrollnumer());
+    }
+
+    // optional uint32 apnBackUpNumber = 3;
+    if (has_apnbackupnumber()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->apnbackupnumber());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DeleteErollDataMsg_Request::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DeleteErollDataMsg_Request* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DeleteErollDataMsg_Request*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DeleteErollDataMsg_Request::MergeFrom(const DeleteErollDataMsg_Request& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_attend()) {
+      mutable_attend()->::com::spplus::buff::AttendBean::MergeFrom(from.attend());
+    }
+    if (from.has_apnenrollnumer()) {
+      set_apnenrollnumer(from.apnenrollnumer());
+    }
+    if (from.has_apnbackupnumber()) {
+      set_apnbackupnumber(from.apnbackupnumber());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DeleteErollDataMsg_Request::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg_Request::CopyFrom(const DeleteErollDataMsg_Request& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteErollDataMsg_Request::IsInitialized() const {
+
+  return true;
+}
+
+void DeleteErollDataMsg_Request::Swap(DeleteErollDataMsg_Request* other) {
+  if (other != this) {
+    std::swap(attend_, other->attend_);
+    std::swap(apnenrollnumer_, other->apnenrollnumer_);
+    std::swap(apnbackupnumber_, other->apnbackupnumber_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DeleteErollDataMsg_Request::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DeleteErollDataMsg_Request_descriptor_;
+  metadata.reflection = DeleteErollDataMsg_Request_reflection_;
+  return metadata;
+}
+
+
+// -------------------------------------------------------------------
+
+#ifndef _MSC_VER
+const int DeleteErollDataMsg_Response::kRescodeFieldNumber;
+#endif  // !_MSC_VER
+
+DeleteErollDataMsg_Response::DeleteErollDataMsg_Response()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DeleteErollDataMsg_Response::InitAsDefaultInstance() {
+}
+
+DeleteErollDataMsg_Response::DeleteErollDataMsg_Response(const DeleteErollDataMsg_Response& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg_Response::SharedCtor() {
+  _cached_size_ = 0;
+  rescode_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DeleteErollDataMsg_Response::~DeleteErollDataMsg_Response() {
+  SharedDtor();
+}
+
+void DeleteErollDataMsg_Response::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DeleteErollDataMsg_Response::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DeleteErollDataMsg_Response::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DeleteErollDataMsg_Response_descriptor_;
+}
+
+const DeleteErollDataMsg_Response& DeleteErollDataMsg_Response::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msgbody_2eproto();
+  return *default_instance_;
+}
+
+DeleteErollDataMsg_Response* DeleteErollDataMsg_Response::default_instance_ = NULL;
+
+DeleteErollDataMsg_Response* DeleteErollDataMsg_Response::New() const {
+  return new DeleteErollDataMsg_Response;
+}
+
+void DeleteErollDataMsg_Response::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    rescode_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DeleteErollDataMsg_Response::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 rescode = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rescode_)));
+          set_has_rescode();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DeleteErollDataMsg_Response::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 rescode = 1;
+  if (has_rescode()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->rescode(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DeleteErollDataMsg_Response::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 rescode = 1;
+  if (has_rescode()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->rescode(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DeleteErollDataMsg_Response::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 rescode = 1;
+    if (has_rescode()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->rescode());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DeleteErollDataMsg_Response::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DeleteErollDataMsg_Response* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DeleteErollDataMsg_Response*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DeleteErollDataMsg_Response::MergeFrom(const DeleteErollDataMsg_Response& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_rescode()) {
+      set_rescode(from.rescode());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DeleteErollDataMsg_Response::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg_Response::CopyFrom(const DeleteErollDataMsg_Response& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteErollDataMsg_Response::IsInitialized() const {
+
+  return true;
+}
+
+void DeleteErollDataMsg_Response::Swap(DeleteErollDataMsg_Response* other) {
+  if (other != this) {
+    std::swap(rescode_, other->rescode_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DeleteErollDataMsg_Response::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DeleteErollDataMsg_Response_descriptor_;
+  metadata.reflection = DeleteErollDataMsg_Response_reflection_;
+  return metadata;
+}
+
+
+// -------------------------------------------------------------------
+
+#ifndef _MSC_VER
+const int DeleteErollDataMsg::kRequestFieldNumber;
+const int DeleteErollDataMsg::kResponseFieldNumber;
+#endif  // !_MSC_VER
+
+DeleteErollDataMsg::DeleteErollDataMsg()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DeleteErollDataMsg::InitAsDefaultInstance() {
+  request_ = const_cast< ::com::spplus::buff::DeleteErollDataMsg_Request*>(&::com::spplus::buff::DeleteErollDataMsg_Request::default_instance());
+  response_ = const_cast< ::com::spplus::buff::DeleteErollDataMsg_Response*>(&::com::spplus::buff::DeleteErollDataMsg_Response::default_instance());
+}
+
+DeleteErollDataMsg::DeleteErollDataMsg(const DeleteErollDataMsg& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg::SharedCtor() {
+  _cached_size_ = 0;
+  request_ = NULL;
+  response_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DeleteErollDataMsg::~DeleteErollDataMsg() {
+  SharedDtor();
+}
+
+void DeleteErollDataMsg::SharedDtor() {
+  if (this != default_instance_) {
+    delete request_;
+    delete response_;
+  }
+}
+
+void DeleteErollDataMsg::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DeleteErollDataMsg::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DeleteErollDataMsg_descriptor_;
+}
+
+const DeleteErollDataMsg& DeleteErollDataMsg::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msgbody_2eproto();
+  return *default_instance_;
+}
+
+DeleteErollDataMsg* DeleteErollDataMsg::default_instance_ = NULL;
+
+DeleteErollDataMsg* DeleteErollDataMsg::New() const {
+  return new DeleteErollDataMsg;
+}
+
+void DeleteErollDataMsg::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_request()) {
+      if (request_ != NULL) request_->::com::spplus::buff::DeleteErollDataMsg_Request::Clear();
+    }
+    if (has_response()) {
+      if (response_ != NULL) response_->::com::spplus::buff::DeleteErollDataMsg_Response::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DeleteErollDataMsg::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_request()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_response;
+        break;
+      }
+
+      // optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_response:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_response()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DeleteErollDataMsg::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+  if (has_request()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->request(), output);
+  }
+
+  // optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+  if (has_response()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->response(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DeleteErollDataMsg::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+  if (has_request()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->request(), target);
+  }
+
+  // optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+  if (has_response()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->response(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DeleteErollDataMsg::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+    if (has_request()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->request());
+    }
+
+    // optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+    if (has_response()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->response());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DeleteErollDataMsg::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DeleteErollDataMsg* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DeleteErollDataMsg*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DeleteErollDataMsg::MergeFrom(const DeleteErollDataMsg& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_request()) {
+      mutable_request()->::com::spplus::buff::DeleteErollDataMsg_Request::MergeFrom(from.request());
+    }
+    if (from.has_response()) {
+      mutable_response()->::com::spplus::buff::DeleteErollDataMsg_Response::MergeFrom(from.response());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DeleteErollDataMsg::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteErollDataMsg::CopyFrom(const DeleteErollDataMsg& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteErollDataMsg::IsInitialized() const {
+
+  return true;
+}
+
+void DeleteErollDataMsg::Swap(DeleteErollDataMsg* other) {
+  if (other != this) {
+    std::swap(request_, other->request_);
+    std::swap(response_, other->response_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DeleteErollDataMsg::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DeleteErollDataMsg_descriptor_;
+  metadata.reflection = DeleteErollDataMsg_reflection_;
   return metadata;
 }
 

@@ -1,5 +1,6 @@
 #include "cmdbase.h"
-
+#include "buff/msgbody.pb.h"
+#include "defines.h"
 class CmdImpl	:public CmdBase
 {
 public:
@@ -22,4 +23,7 @@ private:
 
 	// 设置门状态
 	void		setDoorStatus(sClientMsg* msg);
+
+	// 连接设备
+	int			connect(PBNS::AttendBean attend);
 };

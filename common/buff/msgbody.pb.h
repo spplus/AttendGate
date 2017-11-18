@@ -53,6 +53,9 @@ class SetDoorStatusMsg_Response;
 class EnableUserMsg;
 class EnableUserMsg_Request;
 class EnableUserMsg_Response;
+class DeleteErollDataMsg;
+class DeleteErollDataMsg_Request;
+class DeleteErollDataMsg_Response;
 
 // ===================================================================
 
@@ -265,12 +268,17 @@ class UserBean : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 apnenableflag() const;
   inline void set_apnenableflag(::google::protobuf::int64 value);
 
-  // optional int64 apnEnrollData = 5;
+  // optional bytes apnEnrollData = 5;
   inline bool has_apnenrolldata() const;
   inline void clear_apnenrolldata();
   static const int kApnEnrollDataFieldNumber = 5;
-  inline ::google::protobuf::int64 apnenrolldata() const;
-  inline void set_apnenrolldata(::google::protobuf::int64 value);
+  inline const ::std::string& apnenrolldata() const;
+  inline void set_apnenrolldata(const ::std::string& value);
+  inline void set_apnenrolldata(const char* value);
+  inline void set_apnenrolldata(const void* value, size_t size);
+  inline ::std::string* mutable_apnenrolldata();
+  inline ::std::string* release_apnenrolldata();
+  inline void set_allocated_apnenrolldata(::std::string* apnenrolldata);
 
   // optional int64 apnPassWord = 6;
   inline bool has_apnpassword() const;
@@ -300,7 +308,7 @@ class UserBean : public ::google::protobuf::Message {
   ::google::protobuf::int64 apnbackupnumber_;
   ::google::protobuf::int64 apnmechineprivilege_;
   ::google::protobuf::int64 apnenableflag_;
-  ::google::protobuf::int64 apnenrolldata_;
+  ::std::string* apnenrolldata_;
   ::google::protobuf::int64 apnpassword_;
 
   mutable int _cached_size_;
@@ -390,17 +398,12 @@ class LogDataBean : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 apninoutmode() const;
   inline void set_apninoutmode(::google::protobuf::int64 value);
 
-  // optional bytes apnDateTime = 4;
+  // optional int64 apnDateTime = 4;
   inline bool has_apndatetime() const;
   inline void clear_apndatetime();
   static const int kApnDateTimeFieldNumber = 4;
-  inline const ::std::string& apndatetime() const;
-  inline void set_apndatetime(const ::std::string& value);
-  inline void set_apndatetime(const char* value);
-  inline void set_apndatetime(const void* value, size_t size);
-  inline ::std::string* mutable_apndatetime();
-  inline ::std::string* release_apndatetime();
-  inline void set_allocated_apndatetime(::std::string* apndatetime);
+  inline ::google::protobuf::int64 apndatetime() const;
+  inline void set_apndatetime(::google::protobuf::int64 value);
 
   // @@protoc_insertion_point(class_scope:com.spplus.buff.LogDataBean)
  private:
@@ -418,7 +421,7 @@ class LogDataBean : public ::google::protobuf::Message {
   ::google::protobuf::int64 apnenrollnumer_;
   ::google::protobuf::int64 apnverifymode_;
   ::google::protobuf::int64 apninoutmode_;
-  ::std::string* apndatetime_;
+  ::google::protobuf::int64 apndatetime_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
@@ -770,10 +773,17 @@ class GetEnrollDataMsg_Request : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 apnenrollnumer() const;
   inline void set_apnenrollnumer(::google::protobuf::int64 value);
 
-  // optional .com.spplus.buff.AttendBean attend = 2;
+  // optional int64 apnBackUpNumber = 2;
+  inline bool has_apnbackupnumber() const;
+  inline void clear_apnbackupnumber();
+  static const int kApnBackUpNumberFieldNumber = 2;
+  inline ::google::protobuf::int64 apnbackupnumber() const;
+  inline void set_apnbackupnumber(::google::protobuf::int64 value);
+
+  // optional .com.spplus.buff.AttendBean attend = 3;
   inline bool has_attend() const;
   inline void clear_attend();
-  static const int kAttendFieldNumber = 2;
+  static const int kAttendFieldNumber = 3;
   inline const ::com::spplus::buff::AttendBean& attend() const;
   inline ::com::spplus::buff::AttendBean* mutable_attend();
   inline ::com::spplus::buff::AttendBean* release_attend();
@@ -783,16 +793,19 @@ class GetEnrollDataMsg_Request : public ::google::protobuf::Message {
  private:
   inline void set_has_apnenrollnumer();
   inline void clear_has_apnenrollnumer();
+  inline void set_has_apnbackupnumber();
+  inline void clear_has_apnbackupnumber();
   inline void set_has_attend();
   inline void clear_has_attend();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int64 apnenrollnumer_;
+  ::google::protobuf::int64 apnbackupnumber_;
   ::com::spplus::buff::AttendBean* attend_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -1059,17 +1072,27 @@ class GetGeneralLogDataMsg_Request : public ::google::protobuf::Message {
   inline ::com::spplus::buff::AttendBean* release_attend();
   inline void set_allocated_attend(::com::spplus::buff::AttendBean* attend);
 
+  // optional uint32 readmask = 2;
+  inline bool has_readmask() const;
+  inline void clear_readmask();
+  static const int kReadmaskFieldNumber = 2;
+  inline ::google::protobuf::uint32 readmask() const;
+  inline void set_readmask(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.GetGeneralLogDataMsg.Request)
  private:
   inline void set_has_attend();
   inline void clear_has_attend();
+  inline void set_has_readmask();
+  inline void clear_has_readmask();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::com::spplus::buff::AttendBean* attend_;
+  ::google::protobuf::uint32 readmask_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -1842,6 +1865,291 @@ class EnableUserMsg : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static EnableUserMsg* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class DeleteErollDataMsg_Request : public ::google::protobuf::Message {
+ public:
+  DeleteErollDataMsg_Request();
+  virtual ~DeleteErollDataMsg_Request();
+
+  DeleteErollDataMsg_Request(const DeleteErollDataMsg_Request& from);
+
+  inline DeleteErollDataMsg_Request& operator=(const DeleteErollDataMsg_Request& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeleteErollDataMsg_Request& default_instance();
+
+  void Swap(DeleteErollDataMsg_Request* other);
+
+  // implements Message ----------------------------------------------
+
+  DeleteErollDataMsg_Request* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DeleteErollDataMsg_Request& from);
+  void MergeFrom(const DeleteErollDataMsg_Request& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  inline bool has_attend() const;
+  inline void clear_attend();
+  static const int kAttendFieldNumber = 1;
+  inline const ::com::spplus::buff::AttendBean& attend() const;
+  inline ::com::spplus::buff::AttendBean* mutable_attend();
+  inline ::com::spplus::buff::AttendBean* release_attend();
+  inline void set_allocated_attend(::com::spplus::buff::AttendBean* attend);
+
+  // optional uint32 apnEnrollNumer = 2;
+  inline bool has_apnenrollnumer() const;
+  inline void clear_apnenrollnumer();
+  static const int kApnEnrollNumerFieldNumber = 2;
+  inline ::google::protobuf::uint32 apnenrollnumer() const;
+  inline void set_apnenrollnumer(::google::protobuf::uint32 value);
+
+  // optional uint32 apnBackUpNumber = 3;
+  inline bool has_apnbackupnumber() const;
+  inline void clear_apnbackupnumber();
+  static const int kApnBackUpNumberFieldNumber = 3;
+  inline ::google::protobuf::uint32 apnbackupnumber() const;
+  inline void set_apnbackupnumber(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.DeleteErollDataMsg.Request)
+ private:
+  inline void set_has_attend();
+  inline void clear_has_attend();
+  inline void set_has_apnenrollnumer();
+  inline void clear_has_apnenrollnumer();
+  inline void set_has_apnbackupnumber();
+  inline void clear_has_apnbackupnumber();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::AttendBean* attend_;
+  ::google::protobuf::uint32 apnenrollnumer_;
+  ::google::protobuf::uint32 apnbackupnumber_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static DeleteErollDataMsg_Request* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DeleteErollDataMsg_Response : public ::google::protobuf::Message {
+ public:
+  DeleteErollDataMsg_Response();
+  virtual ~DeleteErollDataMsg_Response();
+
+  DeleteErollDataMsg_Response(const DeleteErollDataMsg_Response& from);
+
+  inline DeleteErollDataMsg_Response& operator=(const DeleteErollDataMsg_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeleteErollDataMsg_Response& default_instance();
+
+  void Swap(DeleteErollDataMsg_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  DeleteErollDataMsg_Response* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DeleteErollDataMsg_Response& from);
+  void MergeFrom(const DeleteErollDataMsg_Response& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 rescode = 1;
+  inline bool has_rescode() const;
+  inline void clear_rescode();
+  static const int kRescodeFieldNumber = 1;
+  inline ::google::protobuf::uint32 rescode() const;
+  inline void set_rescode(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.DeleteErollDataMsg.Response)
+ private:
+  inline void set_has_rescode();
+  inline void clear_has_rescode();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 rescode_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static DeleteErollDataMsg_Response* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DeleteErollDataMsg : public ::google::protobuf::Message {
+ public:
+  DeleteErollDataMsg();
+  virtual ~DeleteErollDataMsg();
+
+  DeleteErollDataMsg(const DeleteErollDataMsg& from);
+
+  inline DeleteErollDataMsg& operator=(const DeleteErollDataMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeleteErollDataMsg& default_instance();
+
+  void Swap(DeleteErollDataMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  DeleteErollDataMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DeleteErollDataMsg& from);
+  void MergeFrom(const DeleteErollDataMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef DeleteErollDataMsg_Request Request;
+  typedef DeleteErollDataMsg_Response Response;
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+  inline bool has_request() const;
+  inline void clear_request();
+  static const int kRequestFieldNumber = 1;
+  inline const ::com::spplus::buff::DeleteErollDataMsg_Request& request() const;
+  inline ::com::spplus::buff::DeleteErollDataMsg_Request* mutable_request();
+  inline ::com::spplus::buff::DeleteErollDataMsg_Request* release_request();
+  inline void set_allocated_request(::com::spplus::buff::DeleteErollDataMsg_Request* request);
+
+  // optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+  inline bool has_response() const;
+  inline void clear_response();
+  static const int kResponseFieldNumber = 2;
+  inline const ::com::spplus::buff::DeleteErollDataMsg_Response& response() const;
+  inline ::com::spplus::buff::DeleteErollDataMsg_Response* mutable_response();
+  inline ::com::spplus::buff::DeleteErollDataMsg_Response* release_response();
+  inline void set_allocated_response(::com::spplus::buff::DeleteErollDataMsg_Response* response);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.DeleteErollDataMsg)
+ private:
+  inline void set_has_request();
+  inline void clear_has_request();
+  inline void set_has_response();
+  inline void clear_has_response();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::DeleteErollDataMsg_Request* request_;
+  ::com::spplus::buff::DeleteErollDataMsg_Response* response_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static DeleteErollDataMsg* default_instance_;
+};
 // ===================================================================
 
 
@@ -2099,7 +2407,7 @@ inline void UserBean::set_apnenableflag(::google::protobuf::int64 value) {
   apnenableflag_ = value;
 }
 
-// optional int64 apnEnrollData = 5;
+// optional bytes apnEnrollData = 5;
 inline bool UserBean::has_apnenrolldata() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -2110,15 +2418,63 @@ inline void UserBean::clear_has_apnenrolldata() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void UserBean::clear_apnenrolldata() {
-  apnenrolldata_ = GOOGLE_LONGLONG(0);
+  if (apnenrolldata_ != &::google::protobuf::internal::kEmptyString) {
+    apnenrolldata_->clear();
+  }
   clear_has_apnenrolldata();
 }
-inline ::google::protobuf::int64 UserBean::apnenrolldata() const {
+inline const ::std::string& UserBean::apnenrolldata() const {
+  return *apnenrolldata_;
+}
+inline void UserBean::set_apnenrolldata(const ::std::string& value) {
+  set_has_apnenrolldata();
+  if (apnenrolldata_ == &::google::protobuf::internal::kEmptyString) {
+    apnenrolldata_ = new ::std::string;
+  }
+  apnenrolldata_->assign(value);
+}
+inline void UserBean::set_apnenrolldata(const char* value) {
+  set_has_apnenrolldata();
+  if (apnenrolldata_ == &::google::protobuf::internal::kEmptyString) {
+    apnenrolldata_ = new ::std::string;
+  }
+  apnenrolldata_->assign(value);
+}
+inline void UserBean::set_apnenrolldata(const void* value, size_t size) {
+  set_has_apnenrolldata();
+  if (apnenrolldata_ == &::google::protobuf::internal::kEmptyString) {
+    apnenrolldata_ = new ::std::string;
+  }
+  apnenrolldata_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UserBean::mutable_apnenrolldata() {
+  set_has_apnenrolldata();
+  if (apnenrolldata_ == &::google::protobuf::internal::kEmptyString) {
+    apnenrolldata_ = new ::std::string;
+  }
   return apnenrolldata_;
 }
-inline void UserBean::set_apnenrolldata(::google::protobuf::int64 value) {
-  set_has_apnenrolldata();
-  apnenrolldata_ = value;
+inline ::std::string* UserBean::release_apnenrolldata() {
+  clear_has_apnenrolldata();
+  if (apnenrolldata_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = apnenrolldata_;
+    apnenrolldata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UserBean::set_allocated_apnenrolldata(::std::string* apnenrolldata) {
+  if (apnenrolldata_ != &::google::protobuf::internal::kEmptyString) {
+    delete apnenrolldata_;
+  }
+  if (apnenrolldata) {
+    set_has_apnenrolldata();
+    apnenrolldata_ = apnenrolldata;
+  } else {
+    clear_has_apnenrolldata();
+    apnenrolldata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // optional int64 apnPassWord = 6;
@@ -2213,7 +2569,7 @@ inline void LogDataBean::set_apninoutmode(::google::protobuf::int64 value) {
   apninoutmode_ = value;
 }
 
-// optional bytes apnDateTime = 4;
+// optional int64 apnDateTime = 4;
 inline bool LogDataBean::has_apndatetime() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2224,63 +2580,15 @@ inline void LogDataBean::clear_has_apndatetime() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void LogDataBean::clear_apndatetime() {
-  if (apndatetime_ != &::google::protobuf::internal::kEmptyString) {
-    apndatetime_->clear();
-  }
+  apndatetime_ = GOOGLE_LONGLONG(0);
   clear_has_apndatetime();
 }
-inline const ::std::string& LogDataBean::apndatetime() const {
-  return *apndatetime_;
-}
-inline void LogDataBean::set_apndatetime(const ::std::string& value) {
-  set_has_apndatetime();
-  if (apndatetime_ == &::google::protobuf::internal::kEmptyString) {
-    apndatetime_ = new ::std::string;
-  }
-  apndatetime_->assign(value);
-}
-inline void LogDataBean::set_apndatetime(const char* value) {
-  set_has_apndatetime();
-  if (apndatetime_ == &::google::protobuf::internal::kEmptyString) {
-    apndatetime_ = new ::std::string;
-  }
-  apndatetime_->assign(value);
-}
-inline void LogDataBean::set_apndatetime(const void* value, size_t size) {
-  set_has_apndatetime();
-  if (apndatetime_ == &::google::protobuf::internal::kEmptyString) {
-    apndatetime_ = new ::std::string;
-  }
-  apndatetime_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LogDataBean::mutable_apndatetime() {
-  set_has_apndatetime();
-  if (apndatetime_ == &::google::protobuf::internal::kEmptyString) {
-    apndatetime_ = new ::std::string;
-  }
+inline ::google::protobuf::int64 LogDataBean::apndatetime() const {
   return apndatetime_;
 }
-inline ::std::string* LogDataBean::release_apndatetime() {
-  clear_has_apndatetime();
-  if (apndatetime_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = apndatetime_;
-    apndatetime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void LogDataBean::set_allocated_apndatetime(::std::string* apndatetime) {
-  if (apndatetime_ != &::google::protobuf::internal::kEmptyString) {
-    delete apndatetime_;
-  }
-  if (apndatetime) {
-    set_has_apndatetime();
-    apndatetime_ = apndatetime;
-  } else {
-    clear_has_apndatetime();
-    apndatetime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
+inline void LogDataBean::set_apndatetime(::google::protobuf::int64 value) {
+  set_has_apndatetime();
+  apndatetime_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -2495,15 +2803,37 @@ inline void GetEnrollDataMsg_Request::set_apnenrollnumer(::google::protobuf::int
   apnenrollnumer_ = value;
 }
 
-// optional .com.spplus.buff.AttendBean attend = 2;
-inline bool GetEnrollDataMsg_Request::has_attend() const {
+// optional int64 apnBackUpNumber = 2;
+inline bool GetEnrollDataMsg_Request::has_apnbackupnumber() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GetEnrollDataMsg_Request::set_has_attend() {
+inline void GetEnrollDataMsg_Request::set_has_apnbackupnumber() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GetEnrollDataMsg_Request::clear_has_attend() {
+inline void GetEnrollDataMsg_Request::clear_has_apnbackupnumber() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void GetEnrollDataMsg_Request::clear_apnbackupnumber() {
+  apnbackupnumber_ = GOOGLE_LONGLONG(0);
+  clear_has_apnbackupnumber();
+}
+inline ::google::protobuf::int64 GetEnrollDataMsg_Request::apnbackupnumber() const {
+  return apnbackupnumber_;
+}
+inline void GetEnrollDataMsg_Request::set_apnbackupnumber(::google::protobuf::int64 value) {
+  set_has_apnbackupnumber();
+  apnbackupnumber_ = value;
+}
+
+// optional .com.spplus.buff.AttendBean attend = 3;
+inline bool GetEnrollDataMsg_Request::has_attend() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GetEnrollDataMsg_Request::set_has_attend() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GetEnrollDataMsg_Request::clear_has_attend() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void GetEnrollDataMsg_Request::clear_attend() {
   if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
@@ -2717,6 +3047,28 @@ inline void GetGeneralLogDataMsg_Request::set_allocated_attend(::com::spplus::bu
   } else {
     clear_has_attend();
   }
+}
+
+// optional uint32 readmask = 2;
+inline bool GetGeneralLogDataMsg_Request::has_readmask() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GetGeneralLogDataMsg_Request::set_has_readmask() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GetGeneralLogDataMsg_Request::clear_has_readmask() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GetGeneralLogDataMsg_Request::clear_readmask() {
+  readmask_ = 0u;
+  clear_has_readmask();
+}
+inline ::google::protobuf::uint32 GetGeneralLogDataMsg_Request::readmask() const {
+  return readmask_;
+}
+inline void GetGeneralLogDataMsg_Request::set_readmask(::google::protobuf::uint32 value) {
+  set_has_readmask();
+  readmask_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -3225,6 +3577,198 @@ inline ::com::spplus::buff::EnableUserMsg_Response* EnableUserMsg::release_respo
   return temp;
 }
 inline void EnableUserMsg::set_allocated_response(::com::spplus::buff::EnableUserMsg_Response* response) {
+  delete response_;
+  response_ = response;
+  if (response) {
+    set_has_response();
+  } else {
+    clear_has_response();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// DeleteErollDataMsg_Request
+
+// optional .com.spplus.buff.AttendBean attend = 1;
+inline bool DeleteErollDataMsg_Request::has_attend() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeleteErollDataMsg_Request::set_has_attend() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeleteErollDataMsg_Request::clear_has_attend() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeleteErollDataMsg_Request::clear_attend() {
+  if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
+  clear_has_attend();
+}
+inline const ::com::spplus::buff::AttendBean& DeleteErollDataMsg_Request::attend() const {
+  return attend_ != NULL ? *attend_ : *default_instance_->attend_;
+}
+inline ::com::spplus::buff::AttendBean* DeleteErollDataMsg_Request::mutable_attend() {
+  set_has_attend();
+  if (attend_ == NULL) attend_ = new ::com::spplus::buff::AttendBean;
+  return attend_;
+}
+inline ::com::spplus::buff::AttendBean* DeleteErollDataMsg_Request::release_attend() {
+  clear_has_attend();
+  ::com::spplus::buff::AttendBean* temp = attend_;
+  attend_ = NULL;
+  return temp;
+}
+inline void DeleteErollDataMsg_Request::set_allocated_attend(::com::spplus::buff::AttendBean* attend) {
+  delete attend_;
+  attend_ = attend;
+  if (attend) {
+    set_has_attend();
+  } else {
+    clear_has_attend();
+  }
+}
+
+// optional uint32 apnEnrollNumer = 2;
+inline bool DeleteErollDataMsg_Request::has_apnenrollnumer() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeleteErollDataMsg_Request::set_has_apnenrollnumer() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeleteErollDataMsg_Request::clear_has_apnenrollnumer() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeleteErollDataMsg_Request::clear_apnenrollnumer() {
+  apnenrollnumer_ = 0u;
+  clear_has_apnenrollnumer();
+}
+inline ::google::protobuf::uint32 DeleteErollDataMsg_Request::apnenrollnumer() const {
+  return apnenrollnumer_;
+}
+inline void DeleteErollDataMsg_Request::set_apnenrollnumer(::google::protobuf::uint32 value) {
+  set_has_apnenrollnumer();
+  apnenrollnumer_ = value;
+}
+
+// optional uint32 apnBackUpNumber = 3;
+inline bool DeleteErollDataMsg_Request::has_apnbackupnumber() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DeleteErollDataMsg_Request::set_has_apnbackupnumber() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DeleteErollDataMsg_Request::clear_has_apnbackupnumber() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DeleteErollDataMsg_Request::clear_apnbackupnumber() {
+  apnbackupnumber_ = 0u;
+  clear_has_apnbackupnumber();
+}
+inline ::google::protobuf::uint32 DeleteErollDataMsg_Request::apnbackupnumber() const {
+  return apnbackupnumber_;
+}
+inline void DeleteErollDataMsg_Request::set_apnbackupnumber(::google::protobuf::uint32 value) {
+  set_has_apnbackupnumber();
+  apnbackupnumber_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DeleteErollDataMsg_Response
+
+// optional uint32 rescode = 1;
+inline bool DeleteErollDataMsg_Response::has_rescode() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeleteErollDataMsg_Response::set_has_rescode() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeleteErollDataMsg_Response::clear_has_rescode() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeleteErollDataMsg_Response::clear_rescode() {
+  rescode_ = 0u;
+  clear_has_rescode();
+}
+inline ::google::protobuf::uint32 DeleteErollDataMsg_Response::rescode() const {
+  return rescode_;
+}
+inline void DeleteErollDataMsg_Response::set_rescode(::google::protobuf::uint32 value) {
+  set_has_rescode();
+  rescode_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DeleteErollDataMsg
+
+// optional .com.spplus.buff.DeleteErollDataMsg.Request request = 1;
+inline bool DeleteErollDataMsg::has_request() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeleteErollDataMsg::set_has_request() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeleteErollDataMsg::clear_has_request() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeleteErollDataMsg::clear_request() {
+  if (request_ != NULL) request_->::com::spplus::buff::DeleteErollDataMsg_Request::Clear();
+  clear_has_request();
+}
+inline const ::com::spplus::buff::DeleteErollDataMsg_Request& DeleteErollDataMsg::request() const {
+  return request_ != NULL ? *request_ : *default_instance_->request_;
+}
+inline ::com::spplus::buff::DeleteErollDataMsg_Request* DeleteErollDataMsg::mutable_request() {
+  set_has_request();
+  if (request_ == NULL) request_ = new ::com::spplus::buff::DeleteErollDataMsg_Request;
+  return request_;
+}
+inline ::com::spplus::buff::DeleteErollDataMsg_Request* DeleteErollDataMsg::release_request() {
+  clear_has_request();
+  ::com::spplus::buff::DeleteErollDataMsg_Request* temp = request_;
+  request_ = NULL;
+  return temp;
+}
+inline void DeleteErollDataMsg::set_allocated_request(::com::spplus::buff::DeleteErollDataMsg_Request* request) {
+  delete request_;
+  request_ = request;
+  if (request) {
+    set_has_request();
+  } else {
+    clear_has_request();
+  }
+}
+
+// optional .com.spplus.buff.DeleteErollDataMsg.Response response = 2;
+inline bool DeleteErollDataMsg::has_response() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeleteErollDataMsg::set_has_response() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeleteErollDataMsg::clear_has_response() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeleteErollDataMsg::clear_response() {
+  if (response_ != NULL) response_->::com::spplus::buff::DeleteErollDataMsg_Response::Clear();
+  clear_has_response();
+}
+inline const ::com::spplus::buff::DeleteErollDataMsg_Response& DeleteErollDataMsg::response() const {
+  return response_ != NULL ? *response_ : *default_instance_->response_;
+}
+inline ::com::spplus::buff::DeleteErollDataMsg_Response* DeleteErollDataMsg::mutable_response() {
+  set_has_response();
+  if (response_ == NULL) response_ = new ::com::spplus::buff::DeleteErollDataMsg_Response;
+  return response_;
+}
+inline ::com::spplus::buff::DeleteErollDataMsg_Response* DeleteErollDataMsg::release_response() {
+  clear_has_response();
+  ::com::spplus::buff::DeleteErollDataMsg_Response* temp = response_;
+  response_ = NULL;
+  return temp;
+}
+inline void DeleteErollDataMsg::set_allocated_response(::com::spplus::buff::DeleteErollDataMsg_Response* response) {
   delete response_;
   response_ = response;
   if (response) {
