@@ -45,7 +45,7 @@ char* PacketParser::encoder(string data,int msgtype,int &outlengh)
 {
 	
 	// 打包后总总长度 = 包内容总长度+消息头长度+消息类型长度+消息尾长度
-	outlengh = data.length()+FRAME_HEAD_LEN+FRAME_TAG__LEN+DATA_TYPE_LEN+FRAME_TAG__LEN;
+	outlengh = data.length()+FRAME_TAG__LEN+DATA_TYPE_LEN+FRAME_TAG__LEN;
 
 	// 分配打包后的消息缓冲区
 	char * buff = new char[outlengh];
