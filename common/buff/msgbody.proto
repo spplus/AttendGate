@@ -32,6 +32,23 @@ message LogDataBean
 	optional int64 apnDateTime		= 4;
 }
 
+// 获取用户列表
+message GetAllUserIDMsg
+{ 
+	//请求体定义
+	message Request {
+		optional AttendBean	attend					= 1;		// 打卡机信息	
+  	}
+  	//响应体定义
+	message Response {
+		repeated UserBean 	user			= 1;
+		optional uint32		rescode			= 2;	// 0 成功，其他失败
+  	}
+	optional Request 	request 	= 1;
+  	optional Response 	response 	= 2;
+  
+}
+
 
 // 添加用户
 message PutEnrollDataMsg

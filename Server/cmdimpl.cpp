@@ -23,6 +23,9 @@ void CmdImpl::exec(sClientMsg* msg)
 	case CMD_SetDoorStatus:
 		setDoorStatus(msg);
 		break;
+	case CMD_GetAllUserID:
+		getUserList(msg);
+		break;
 	default:
 		break;
 	}
@@ -38,6 +41,51 @@ int CmdImpl::connect(PBNS::AttendBean attend)
 	return cid;
 }
 
+void CmdImpl::getUserList(sClientMsg* msg)
+{
+	PBNS::GetAllUserIDMsg_Request req;
+	PBNS::GetAllUserIDMsg_Response res;
+	req.ParseFromArray(msg->data,msg->length);
+	LOG->message("开始获取用户列表，设备IP:%s,设备编号:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber());
+
+	int cid = connect(req.attend());
+	if (cid <= 0)
+	{
+		return;
+	}
+	int ret = FK_ReadAllUserID(cid);
+	if (ret != OP_SUCCUSS)
+	{
+		LOG->message("读取用户列表到内存失败，设备IP:%s,设备编号:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber());
+		res.set_rescode(0);
+		goto back;
+	}
+
+	
+	long apnErollNumber,apnBackUpNumer,apnMechinePrivalige,apnEnableFlag;
+	ret = OP_SUCCUSS;
+	while(ret == OP_SUCCUSS)
+	{
+		ret = FK_GetAllUserID(cid,&apnErollNumber,&apnBackUpNumer,&apnMechinePrivalige,&apnEnableFlag);
+		PBNS::UserBean  *bean = res.add_user();
+		bean->set_apnenrollnumer(apnErollNumber);
+		bean->set_apnbackupnumber(apnBackUpNumer);
+		bean->set_apnmechineprivilege(apnMechinePrivalige);
+		bean->set_apnenableflag(apnEnableFlag);
+	}
+	res.set_rescode(1);
+back:
+	disConnect(cid);
+
+	string strData = res.SerializeAsString();
+
+	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
+
+	LOG->message("获取用户列表成功，设备IP:%s,设备编号:%d，用户数:%d.",req.attend().ipaddr().c_str(),res.user_size());
+
+
+}
+
 void CmdImpl::getUser(sClientMsg* msg)
 {
 
@@ -51,7 +99,7 @@ void CmdImpl::getUser(sClientMsg* msg)
 		return;
 	}
 	long apnMechinePrivalege,password;
-	char *apnErollData;
+	char *apnErollData = NULL;
 	int ret = FK_GetEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber(),&apnMechinePrivalege,apnErollData,&password);
 
 	PBNS::GetEnrollDataMsg_Response res;
@@ -60,7 +108,10 @@ void CmdImpl::getUser(sClientMsg* msg)
 		res.mutable_user()->set_apnenrollnumer(req.apnenrollnumer());
 		res.mutable_user()->set_apnbackupnumber(req.apnbackupnumber());
 		res.mutable_user()->set_apnmechineprivilege(apnMechinePrivalege);
-		res.mutable_user()->set_apnenrolldata(apnErollData);
+		if (apnErollData != NULL)
+		{
+			res.mutable_user()->set_apnenrolldata(apnErollData);
+		}
 		res.mutable_user()->set_apnpassword(password);
 		res.set_rescode(1);
 	}

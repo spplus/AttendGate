@@ -9,6 +9,9 @@ private:
 	// 请求获取用户
 	void		getUser(sClientMsg* msg);
 
+	// 获取用户列表
+	void		getUserList(sClientMsg* msg);
+
 	// 添加用户
 	void		putUser(sClientMsg* msg);
 

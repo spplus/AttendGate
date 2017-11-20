@@ -30,6 +30,9 @@
 // 远程控制门禁
 #define				CMD_SetDoorStatus				1005
 
+// 获取用户列表
+#define				CMD_GetAllUserID				1006
+
 
 #endif
 

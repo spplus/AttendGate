@@ -38,6 +38,9 @@ void protobuf_ShutdownFile_msgbody_2eproto();
 class AttendBean;
 class UserBean;
 class LogDataBean;
+class GetAllUserIDMsg;
+class GetAllUserIDMsg_Request;
+class GetAllUserIDMsg_Response;
 class PutEnrollDataMsg;
 class PutEnrollDataMsg_Request;
 class PutEnrollDataMsg_Response;
@@ -432,6 +435,284 @@ class LogDataBean : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static LogDataBean* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetAllUserIDMsg_Request : public ::google::protobuf::Message {
+ public:
+  GetAllUserIDMsg_Request();
+  virtual ~GetAllUserIDMsg_Request();
+
+  GetAllUserIDMsg_Request(const GetAllUserIDMsg_Request& from);
+
+  inline GetAllUserIDMsg_Request& operator=(const GetAllUserIDMsg_Request& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetAllUserIDMsg_Request& default_instance();
+
+  void Swap(GetAllUserIDMsg_Request* other);
+
+  // implements Message ----------------------------------------------
+
+  GetAllUserIDMsg_Request* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetAllUserIDMsg_Request& from);
+  void MergeFrom(const GetAllUserIDMsg_Request& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.AttendBean attend = 1;
+  inline bool has_attend() const;
+  inline void clear_attend();
+  static const int kAttendFieldNumber = 1;
+  inline const ::com::spplus::buff::AttendBean& attend() const;
+  inline ::com::spplus::buff::AttendBean* mutable_attend();
+  inline ::com::spplus::buff::AttendBean* release_attend();
+  inline void set_allocated_attend(::com::spplus::buff::AttendBean* attend);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.GetAllUserIDMsg.Request)
+ private:
+  inline void set_has_attend();
+  inline void clear_has_attend();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::AttendBean* attend_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetAllUserIDMsg_Request* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetAllUserIDMsg_Response : public ::google::protobuf::Message {
+ public:
+  GetAllUserIDMsg_Response();
+  virtual ~GetAllUserIDMsg_Response();
+
+  GetAllUserIDMsg_Response(const GetAllUserIDMsg_Response& from);
+
+  inline GetAllUserIDMsg_Response& operator=(const GetAllUserIDMsg_Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetAllUserIDMsg_Response& default_instance();
+
+  void Swap(GetAllUserIDMsg_Response* other);
+
+  // implements Message ----------------------------------------------
+
+  GetAllUserIDMsg_Response* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetAllUserIDMsg_Response& from);
+  void MergeFrom(const GetAllUserIDMsg_Response& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .com.spplus.buff.UserBean user = 1;
+  inline int user_size() const;
+  inline void clear_user();
+  static const int kUserFieldNumber = 1;
+  inline const ::com::spplus::buff::UserBean& user(int index) const;
+  inline ::com::spplus::buff::UserBean* mutable_user(int index);
+  inline ::com::spplus::buff::UserBean* add_user();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean >&
+      user() const;
+  inline ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean >*
+      mutable_user();
+
+  // optional uint32 rescode = 2;
+  inline bool has_rescode() const;
+  inline void clear_rescode();
+  static const int kRescodeFieldNumber = 2;
+  inline ::google::protobuf::uint32 rescode() const;
+  inline void set_rescode(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.GetAllUserIDMsg.Response)
+ private:
+  inline void set_has_rescode();
+  inline void clear_has_rescode();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean > user_;
+  ::google::protobuf::uint32 rescode_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetAllUserIDMsg_Response* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetAllUserIDMsg : public ::google::protobuf::Message {
+ public:
+  GetAllUserIDMsg();
+  virtual ~GetAllUserIDMsg();
+
+  GetAllUserIDMsg(const GetAllUserIDMsg& from);
+
+  inline GetAllUserIDMsg& operator=(const GetAllUserIDMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetAllUserIDMsg& default_instance();
+
+  void Swap(GetAllUserIDMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  GetAllUserIDMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetAllUserIDMsg& from);
+  void MergeFrom(const GetAllUserIDMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef GetAllUserIDMsg_Request Request;
+  typedef GetAllUserIDMsg_Response Response;
+
+  // accessors -------------------------------------------------------
+
+  // optional .com.spplus.buff.GetAllUserIDMsg.Request request = 1;
+  inline bool has_request() const;
+  inline void clear_request();
+  static const int kRequestFieldNumber = 1;
+  inline const ::com::spplus::buff::GetAllUserIDMsg_Request& request() const;
+  inline ::com::spplus::buff::GetAllUserIDMsg_Request* mutable_request();
+  inline ::com::spplus::buff::GetAllUserIDMsg_Request* release_request();
+  inline void set_allocated_request(::com::spplus::buff::GetAllUserIDMsg_Request* request);
+
+  // optional .com.spplus.buff.GetAllUserIDMsg.Response response = 2;
+  inline bool has_response() const;
+  inline void clear_response();
+  static const int kResponseFieldNumber = 2;
+  inline const ::com::spplus::buff::GetAllUserIDMsg_Response& response() const;
+  inline ::com::spplus::buff::GetAllUserIDMsg_Response* mutable_response();
+  inline ::com::spplus::buff::GetAllUserIDMsg_Response* release_response();
+  inline void set_allocated_response(::com::spplus::buff::GetAllUserIDMsg_Response* response);
+
+  // @@protoc_insertion_point(class_scope:com.spplus.buff.GetAllUserIDMsg)
+ private:
+  inline void set_has_request();
+  inline void clear_has_request();
+  inline void set_has_response();
+  inline void clear_has_response();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::com::spplus::buff::GetAllUserIDMsg_Request* request_;
+  ::com::spplus::buff::GetAllUserIDMsg_Response* response_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msgbody_2eproto();
+  friend void protobuf_AssignDesc_msgbody_2eproto();
+  friend void protobuf_ShutdownFile_msgbody_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetAllUserIDMsg* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -2589,6 +2870,179 @@ inline ::google::protobuf::int64 LogDataBean::apndatetime() const {
 inline void LogDataBean::set_apndatetime(::google::protobuf::int64 value) {
   set_has_apndatetime();
   apndatetime_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GetAllUserIDMsg_Request
+
+// optional .com.spplus.buff.AttendBean attend = 1;
+inline bool GetAllUserIDMsg_Request::has_attend() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GetAllUserIDMsg_Request::set_has_attend() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GetAllUserIDMsg_Request::clear_has_attend() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GetAllUserIDMsg_Request::clear_attend() {
+  if (attend_ != NULL) attend_->::com::spplus::buff::AttendBean::Clear();
+  clear_has_attend();
+}
+inline const ::com::spplus::buff::AttendBean& GetAllUserIDMsg_Request::attend() const {
+  return attend_ != NULL ? *attend_ : *default_instance_->attend_;
+}
+inline ::com::spplus::buff::AttendBean* GetAllUserIDMsg_Request::mutable_attend() {
+  set_has_attend();
+  if (attend_ == NULL) attend_ = new ::com::spplus::buff::AttendBean;
+  return attend_;
+}
+inline ::com::spplus::buff::AttendBean* GetAllUserIDMsg_Request::release_attend() {
+  clear_has_attend();
+  ::com::spplus::buff::AttendBean* temp = attend_;
+  attend_ = NULL;
+  return temp;
+}
+inline void GetAllUserIDMsg_Request::set_allocated_attend(::com::spplus::buff::AttendBean* attend) {
+  delete attend_;
+  attend_ = attend;
+  if (attend) {
+    set_has_attend();
+  } else {
+    clear_has_attend();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// GetAllUserIDMsg_Response
+
+// repeated .com.spplus.buff.UserBean user = 1;
+inline int GetAllUserIDMsg_Response::user_size() const {
+  return user_.size();
+}
+inline void GetAllUserIDMsg_Response::clear_user() {
+  user_.Clear();
+}
+inline const ::com::spplus::buff::UserBean& GetAllUserIDMsg_Response::user(int index) const {
+  return user_.Get(index);
+}
+inline ::com::spplus::buff::UserBean* GetAllUserIDMsg_Response::mutable_user(int index) {
+  return user_.Mutable(index);
+}
+inline ::com::spplus::buff::UserBean* GetAllUserIDMsg_Response::add_user() {
+  return user_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean >&
+GetAllUserIDMsg_Response::user() const {
+  return user_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean >*
+GetAllUserIDMsg_Response::mutable_user() {
+  return &user_;
+}
+
+// optional uint32 rescode = 2;
+inline bool GetAllUserIDMsg_Response::has_rescode() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GetAllUserIDMsg_Response::set_has_rescode() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GetAllUserIDMsg_Response::clear_has_rescode() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GetAllUserIDMsg_Response::clear_rescode() {
+  rescode_ = 0u;
+  clear_has_rescode();
+}
+inline ::google::protobuf::uint32 GetAllUserIDMsg_Response::rescode() const {
+  return rescode_;
+}
+inline void GetAllUserIDMsg_Response::set_rescode(::google::protobuf::uint32 value) {
+  set_has_rescode();
+  rescode_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GetAllUserIDMsg
+
+// optional .com.spplus.buff.GetAllUserIDMsg.Request request = 1;
+inline bool GetAllUserIDMsg::has_request() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GetAllUserIDMsg::set_has_request() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GetAllUserIDMsg::clear_has_request() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GetAllUserIDMsg::clear_request() {
+  if (request_ != NULL) request_->::com::spplus::buff::GetAllUserIDMsg_Request::Clear();
+  clear_has_request();
+}
+inline const ::com::spplus::buff::GetAllUserIDMsg_Request& GetAllUserIDMsg::request() const {
+  return request_ != NULL ? *request_ : *default_instance_->request_;
+}
+inline ::com::spplus::buff::GetAllUserIDMsg_Request* GetAllUserIDMsg::mutable_request() {
+  set_has_request();
+  if (request_ == NULL) request_ = new ::com::spplus::buff::GetAllUserIDMsg_Request;
+  return request_;
+}
+inline ::com::spplus::buff::GetAllUserIDMsg_Request* GetAllUserIDMsg::release_request() {
+  clear_has_request();
+  ::com::spplus::buff::GetAllUserIDMsg_Request* temp = request_;
+  request_ = NULL;
+  return temp;
+}
+inline void GetAllUserIDMsg::set_allocated_request(::com::spplus::buff::GetAllUserIDMsg_Request* request) {
+  delete request_;
+  request_ = request;
+  if (request) {
+    set_has_request();
+  } else {
+    clear_has_request();
+  }
+}
+
+// optional .com.spplus.buff.GetAllUserIDMsg.Response response = 2;
+inline bool GetAllUserIDMsg::has_response() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GetAllUserIDMsg::set_has_response() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GetAllUserIDMsg::clear_has_response() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GetAllUserIDMsg::clear_response() {
+  if (response_ != NULL) response_->::com::spplus::buff::GetAllUserIDMsg_Response::Clear();
+  clear_has_response();
+}
+inline const ::com::spplus::buff::GetAllUserIDMsg_Response& GetAllUserIDMsg::response() const {
+  return response_ != NULL ? *response_ : *default_instance_->response_;
+}
+inline ::com::spplus::buff::GetAllUserIDMsg_Response* GetAllUserIDMsg::mutable_response() {
+  set_has_response();
+  if (response_ == NULL) response_ = new ::com::spplus::buff::GetAllUserIDMsg_Response;
+  return response_;
+}
+inline ::com::spplus::buff::GetAllUserIDMsg_Response* GetAllUserIDMsg::release_response() {
+  clear_has_response();
+  ::com::spplus::buff::GetAllUserIDMsg_Response* temp = response_;
+  response_ = NULL;
+  return temp;
+}
+inline void GetAllUserIDMsg::set_allocated_response(::com::spplus::buff::GetAllUserIDMsg_Response* response) {
+  delete response_;
+  response_ = response;
+  if (response) {
+    set_has_response();
+  } else {
+    clear_has_response();
+  }
 }
 
 // -------------------------------------------------------------------
