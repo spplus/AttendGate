@@ -9,6 +9,10 @@
 #include "clientmgr.h"
 #include "clientmsgservice.h"
 
+ClientHandler::ClientHandler()
+{
+	m_head = new ACE_Message_Block(FRAME_HEAD_LEN);
+}
 
 int ClientHandler::open(void*p)
 {
@@ -48,17 +52,35 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 		LOG->message("recv length 0,connection closed.");
 		return -1;
 	}
- 	if (len != FRAME_HEAD_LEN)
+
+	// 保存消息头内容
+	ACE_OS::memcpy(m_head->wr_ptr(),buff,len);
+	m_head->wr_ptr(len);
+
+	if (m_head->length()<FRAME_HEAD_LEN)
+	{
+		LOG->warn("invalid frame head len:%d,recived head length:%d",len,m_head->length());
+		return 0;
+	}
+	else
+	{
+		LOG->message("recived the whole head");
+	}
+
+ 	/*if (len != FRAME_HEAD_LEN )
 	{
 		LOG->warn("invalid frame head len:%d",len);
 		return 0;
 	}
+	*/
 
 	// 解析出数据包长度
 	unsigned long int plen = 0;
-	ACE_OS::memcpy(&plen,buff,FRAME_HEAD_LEN);
-
+	ACE_OS::memcpy(&plen,m_head->rd_ptr(),FRAME_HEAD_LEN);
 	
+	m_head->rd_ptr(FRAME_HEAD_LEN);
+	m_head->reset();
+
 		// 判断数据包长度是否非法
 		if (plen > MAX_PACKET_LEN || plen <0)
 		{
@@ -168,7 +190,7 @@ bool ClientHandler::SendData(const char* data,int length)
 
 	if(get_handle() == ACE_INVALID_HANDLE)
 	{
-		delete []data;
+		//delete []data;
 		return false;
 	}
 
@@ -200,7 +222,7 @@ bool ClientHandler::SendData(const char* data,int length)
 		// 一次性发送完一包数据
 		else if(nDataLen >= nSendLen)   
 		{
-			delete []data;
+			//delete []data;
 			return true;
 		}
 		// 分多次发送
@@ -212,7 +234,7 @@ bool ClientHandler::SendData(const char* data,int length)
 			// 多次发送完毕
 			if (nIsSendSize == nSendLen)
 			{
-				delete []data;
+				//delete []data;
 				return true;
 			}
 		}

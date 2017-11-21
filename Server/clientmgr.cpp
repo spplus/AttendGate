@@ -38,17 +38,18 @@ ClientHandler* ClientMgr::get(unsigned int connid)
 
 int ClientMgr::sendData(unsigned int connid,string data,int msgtype)
 {
-	// ДђАќЪ§Он
+
 	int outLength = 0;
-	
-	
-	
+
 	char * buff = m_pack.encoder(data,msgtype,outLength);
 
 	ClientHandler* handler = get(connid);
 	if (handler != NULL)
 	{
-		return handler->SendData(buff,outLength);
+		if(handler->SendData(buff,outLength))
+		{
+			LOG->message("返回客户端数据总长度:%d",outLength);
+		}
 	}
 	else
 	{

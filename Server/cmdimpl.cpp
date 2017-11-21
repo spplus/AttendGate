@@ -1,8 +1,7 @@
 #include "cmdimpl.h"
 
 
-void CmdImpl::exec(sClientMsg* msg)
-{
+void CmdImpl::exec(sClientMsg* msg){
 	switch (msg->type)
 	{
 	case CMD_GetErollData:	
@@ -74,14 +73,13 @@ void CmdImpl::getUserList(sClientMsg* msg)
 		bean->set_apnenableflag(apnEnableFlag);
 	}
 	res.set_rescode(1);
+	LOG->message("获取用户列表成功，用户数:%d.",req.attend().ipaddr().c_str(),res.user_size());
 back:
 	disConnect(cid);
 
 	string strData = res.SerializeAsString();
 
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
-
-	LOG->message("获取用户列表成功，设备IP:%s,设备编号:%d，用户数:%d.",req.attend().ipaddr().c_str(),res.user_size());
 
 
 }
@@ -90,19 +88,21 @@ void CmdImpl::getUser(sClientMsg* msg)
 {
 
 	PBNS::GetEnrollDataMsg_Request req;
+	PBNS::GetEnrollDataMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
-	LOG->message("开始获取用户数据，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnenrollnumer());
+	LOG->message("开始获取用户数据，用户ID:%d.",req.apnenrollnumer());
 
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;
 	}
 	long apnMechinePrivalege,password;
 	char *apnErollData = NULL;
 	int ret = FK_GetEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber(),&apnMechinePrivalege,apnErollData,&password);
 
-	PBNS::GetEnrollDataMsg_Response res;
+	
 	if (ret == OP_SUCCUSS)
 	{
 		res.mutable_user()->set_apnenrollnumer(req.apnenrollnumer());
@@ -114,44 +114,49 @@ void CmdImpl::getUser(sClientMsg* msg)
 		}
 		res.mutable_user()->set_apnpassword(password);
 		res.set_rescode(1);
+		LOG->message("获取用户数据成功.");
 	}
 	else
 	{
 		res.set_rescode(0);
+		LOG->message("获取用户数据失败，错误代码:%d.",ret);
 	}
 
 	disConnect(cid);
-
+back:
 	string strData = res.SerializeAsString();
-
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
 
-	LOG->message("获取用户数据成功，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnenrollnumer());
 
 }
 
 void CmdImpl::putUser(sClientMsg* msg)
 {
 	PBNS::PutEnrollDataMsg_Request req;
+	PBNS::PutEnrollDataMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
-	LOG->message("开始添加用户，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.user().apnenrollnumer());
+
+	LOG->message("开始添加用户，用户ID:%d.",req.user().apnenrollnumer());
 
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;
 	}
-	PBNS::PutEnrollDataMsg_Response res;
+	
 	int ret = FK_PutEnrollData(cid,req.user().apnenrollnumer(),req.user().apnbackupnumber(),req.user().apnmechineprivilege(),(void*)req.user().apnenrolldata().c_str(),req.user().apnpassword());
 	if (ret == OP_SUCCUSS)
 	{	
-		LOG->message("添加用户成功，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.user().apnenrollnumer());
+		LOG->message("添加用户成功.");
 	}
 	else
 	{
-		LOG->message("添加用户失败，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.user().apnenrollnumer());
+		LOG->message("添加用户失败，错误代码:%d.",ret);
 	}
 	res.set_rescode(ret);
+	
+back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
 }
@@ -159,117 +164,153 @@ void CmdImpl::putUser(sClientMsg* msg)
 void CmdImpl::getLogData(sClientMsg* msg)
 {
 	PBNS::GetGeneralLogDataMsg_Request req;
+	PBNS::GetGeneralLogDataMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
-	LOG->message("开始获取用户签到记录，设备IP:%s,设备编号:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber());
+	LOG->message("开始获取用户签到记录，设备编号:%d.",req.attend().nmachinenumber());
 
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;
 	}
-	PBNS::GetGeneralLogDataMsg_Response res;
+	
 	int ret = FK_LoadGeneralLogData(cid,req.readmask());
 	if (ret != OP_SUCCUSS)
 	{
 		LOG->error("加载签到记录到内存失败.");
 		res.set_rescode(ret);
+		goto back;
 	}
 
 	long erollNumber,verifyMode,inOutMode;
 	DATE dateTime;
 	ret = FK_GetGeneralLogData(cid,&erollNumber,&verifyMode,&inOutMode,&dateTime);
-	while (ret != OP_SUCCUSS)
+	while (ret == OP_SUCCUSS)
 	{
 		PBNS::LogDataBean* bean	= res.add_logrec();
 		bean->set_apnenrollnumer(erollNumber);
 		bean->set_apnverifymode(verifyMode);
 		bean->set_apninoutmode(inOutMode);
 		bean->set_apndatetime(dateTime);
+		ret = FK_GetGeneralLogData(cid,&erollNumber,&verifyMode,&inOutMode,&dateTime);
 	}
 	if (res.logrec_size()>0)
 	{
 		res.set_rescode(1);
+		LOG->message("获取用户签到记录成功，获取记录数：%d.",res.logrec_size());
 	}
 	else
 	{
 		res.set_rescode(0);
+		LOG->message("获取用户签到记录结束，获取记录数：%d.",0);
 	}
+
+back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
-	LOG->message("获取用户签到记录结束，设备IP:%s,设备编号:%d，获取记录数：%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),res.logrec_size());
+	
 }
 
 void CmdImpl::enableUser(sClientMsg* msg)
 {
 	PBNS::EnableUserMsg_Request req;
+	PBNS::EnableUserMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
 
-	LOG->message("开始控制用户状态，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnbackupnumber());
+	LOG->message("开始控制用户状态，用户ID:%d,控制标志:%d.",req.apnenrollnumer(),req.apnenableflag());
 
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;;
 	}
 	int ret = FK_EnableUser(cid,req.apnenrollnumer(),req.apnbackupnumber(),req.apnenableflag());
+	if (ret == OP_SUCCUSS)
+	{
+		LOG->message("控制用户状态成功.");
+	}
+	else
+	{
+		LOG->message("控制用户状态失败，错误码:%d.",ret);
+	}
 	disConnect(cid);
-
-	PBNS::EnableUserMsg_Response res;
 	res.set_rescode(ret);
+	
+back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
 
-	LOG->message("控制用户状态成功返回，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnbackupnumber());
+	
 
 }
 
 void CmdImpl::delUser(sClientMsg* msg)
 {
 	PBNS::DeleteErollDataMsg_Request req;
+	PBNS::DeleteErollDataMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
 
-	LOG->message("开始删除用户，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnbackupnumber());
+	int anpErollNumber = req.apnenrollnumer();
+	
+	LOG->message("开始删除用户:%d",anpErollNumber);
 
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;
 	}
 
 	int ret = FK_DeleteEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber());
 	if (ret != OP_SUCCUSS)
 	{
-		LOG->message("删除用户失败，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnbackupnumber());
+		LOG->warn("删除用户失败,错误码:%d",ret);
 	}
-	PBNS::DeleteErollDataMsg_Response res;
+	else
+	{
+		LOG->message("删除用户成功,设备IP:%s,设备编号:%d",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),anpErollNumber);
+	}
+	
 	res.set_rescode(ret);
 
+back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
 
-	LOG->message("删除用户成功，设备IP:%s,设备编号:%d，用户ID:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.apnbackupnumber());
 
 }
 
 void CmdImpl::setDoorStatus(sClientMsg* msg)
 {
 	PBNS::SetDoorStatusMsg_Request req;
+	PBNS::SetDoorStatusMsg_Response res;
 	req.ParseFromArray(msg->data,msg->length);
 	
-	LOG->message("控制门状态，设备IP:%s,设备编号:%d，门状态:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),req.status());
+	LOG->message("控制门状态，门状态:%d",req.status());
 
 	int cid = connectNet(req.attend().nmachinenumber(),req.attend().ipaddr().c_str(),req.attend().nport());
 	if (cid <= 0)
 	{
-		LOG->error("连接设备失败!设备IP:%s,设备编号:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber());
-		return;
+		res.set_rescode(CONNECT_FAILED);
+		goto back;
 	}
 
 	int ret = FK_SetDoorStatus(cid,req.status());
+	ret = FK_SetDoorStatus(cid,DOOR_CONROLRESET);
+	if (ret == OP_SUCCUSS)
+	{
+		LOG->message("控制门状态成功，门状态:%d",req.status());
+	}
+	else
+	{
+		LOG->message("控制门状态失败，错误码:%d",ret);
+	}
 	disConnect(cid);
-
-	PBNS::SetDoorStatusMsg_Response res;
 	res.set_rescode(ret);
+
+back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
 	

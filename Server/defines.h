@@ -33,6 +33,9 @@ const short		FRAME_TAG_END = 	0x88;
 // 操作状态
 #define		OP_SUCCUSS		1
 
+// 连接设备失败
+#define		CONNECT_FAILED  999
+
 // 授权
 #define		LICENSE			1262
 

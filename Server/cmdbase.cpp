@@ -21,6 +21,6 @@ void CmdBase::disConnect(int connectId)
 {
 	FK_DisConnect(m_connectId);
 
-	LOG->message("断开连接");
+	LOG->message("断开设备连接");
 
 }

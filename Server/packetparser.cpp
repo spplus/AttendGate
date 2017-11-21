@@ -44,15 +44,16 @@ sClientMsg* PacketParser::decoder(char* data,int datalength)
 char* PacketParser::encoder(string data,int msgtype,int &outlengh)
 {
 	
-	// 打包后总总长度 = 包内容总长度+消息头长度+消息类型长度+消息尾长度
-	outlengh = data.length()+FRAME_TAG__LEN+DATA_TYPE_LEN+FRAME_TAG__LEN;
+	// 打包后总总长度 = 包内容总长度+消息头长度+消息类型长度+消息尾长度+包总长度占用字节
+	outlengh = data.length()+FRAME_TAG__LEN+DATA_TYPE_LEN+FRAME_TAG__LEN+FRAME_HEAD_LEN;
 
 	// 分配打包后的消息缓冲区
 	char * buff = new char[outlengh];
 	int pos = 0;
-	
+
 	// 消息总长度
-	ACE_OS::memcpy(buff+pos,&outlengh,FRAME_HEAD_LEN);
+	int packetLengh = outlengh - FRAME_HEAD_LEN;
+	ACE_OS::memcpy(buff+pos,&packetLengh,FRAME_HEAD_LEN);
 	pos += FRAME_HEAD_LEN;
 
 	// 消息头
