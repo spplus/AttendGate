@@ -55,12 +55,11 @@ void CmdImpl::getUserList(sClientMsg* msg)
 	int ret = FK_ReadAllUserID(cid);
 	if (ret != OP_SUCCUSS)
 	{
-		LOG->message("读取用户列表到内存失败，设备IP:%s,设备编号:%d.",req.attend().ipaddr().c_str(),req.attend().nmachinenumber());
+		LOG->message("读取用户列表到内存失败，错误代码%d.",ret);
 		res.set_rescode(0);
 		goto back;
 	}
 
-	
 	long apnErollNumber,apnBackUpNumer,apnMechinePrivalige,apnEnableFlag;
 	ret = OP_SUCCUSS;
 	while(ret == OP_SUCCUSS)
@@ -73,7 +72,7 @@ void CmdImpl::getUserList(sClientMsg* msg)
 		bean->set_apnenableflag(apnEnableFlag);
 	}
 	res.set_rescode(1);
-	LOG->message("获取用户列表成功，用户数:%d.",req.attend().ipaddr().c_str(),res.user_size());
+	LOG->message("获取用户列表成功，用户数:%d.",res.user_size());
 back:
 	disConnect(cid);
 
@@ -99,10 +98,11 @@ void CmdImpl::getUser(sClientMsg* msg)
 		goto back;
 	}
 	long apnMechinePrivalege,password;
-	char *apnErollData = NULL;
-	int ret = FK_GetEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber(),&apnMechinePrivalege,apnErollData,&password);
+	char apnErollData[2048];// = new char[10240];
+	memset(&apnErollData,0,2048);
 
-	
+	int ret = FK_GetEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber(),&apnMechinePrivalege,apnErollData,&password);
+	int length = 0;
 	if (ret == OP_SUCCUSS)
 	{
 		res.mutable_user()->set_apnenrollnumer(req.apnenrollnumer());
@@ -111,6 +111,8 @@ void CmdImpl::getUser(sClientMsg* msg)
 		if (apnErollData != NULL)
 		{
 			res.mutable_user()->set_apnenrolldata(apnErollData);
+			length = strlen(apnErollData);
+			length = res.mutable_user()->apnenrolldata().length();
 		}
 		res.mutable_user()->set_apnpassword(password);
 		res.set_rescode(1);
@@ -178,7 +180,7 @@ void CmdImpl::getLogData(sClientMsg* msg)
 	int ret = FK_LoadGeneralLogData(cid,req.readmask());
 	if (ret != OP_SUCCUSS)
 	{
-		LOG->error("加载签到记录到内存失败.");
+		LOG->error("加载签到记录到内存失败，错误代码:%d",ret);
 		res.set_rescode(ret);
 		goto back;
 	}

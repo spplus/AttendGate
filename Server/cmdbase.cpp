@@ -7,11 +7,11 @@ int CmdBase::connectNet(long mechineId,const char* ipaddr,int port)
 	m_connectId = FK_ConnectNet(mechineId, (char*)ipaddr, port, NTIMEOUT, PROTOCOL_TCPIP, NETPASSWORD, LICENSE);
 	if (m_connectId>0)
 	{
-		LOG->message("连接成功:%s:%d.",ipaddr,port);
+		LOG->message("连接设备成功:%s:%d.",ipaddr,port);
 	}
 	else
 	{
-		LOG->warn("连接失败:%s:%d.",ipaddr,port);
+		LOG->warn("连接设备失败:%s:%d.",ipaddr,port);
 	}
 	return m_connectId;
 }

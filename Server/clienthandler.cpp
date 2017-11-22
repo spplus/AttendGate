@@ -78,6 +78,8 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 	unsigned long int plen = 0;
 	ACE_OS::memcpy(&plen,m_head->rd_ptr(),FRAME_HEAD_LEN);
 	
+	LOG->message("packet length:%d",plen);
+
 	m_head->rd_ptr(FRAME_HEAD_LEN);
 	m_head->reset();
 
@@ -107,7 +109,7 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 		// 如果短读，则继续读取。
 		while(total < plen)
 		{
-			ACE_DEBUG((LM_DEBUG,"[%D]total:%d,this length:%d,read:%d.\n",plen,dlen,total));
+			ACE_DEBUG((LM_DEBUG,"[%D]包总长度:%d,本次接收:%d,累计接收:%d.\n",plen,dlen,total));
 			dlen = peer().recv(mb->wr_ptr(),plen-total,&nowait);
 			if (dlen<=0)
 			{
@@ -152,7 +154,6 @@ int ClientHandler::handle_close(ACE_HANDLE h, ACE_Reactor_Mask mask)
 		ACE_INET_Addr peer_addr;
 		if (this->peer().get_remote_addr(peer_addr) == 0 && peer_addr.addr_to_string (peer_name, 64) == 0)
 		{
-			ACE_DEBUG((LM_DEBUG,"[%D]Connection closed:%s.\n",peer_name));
 			LOG->debug("Connection closed:%s.",peer_name);
 		}
 
