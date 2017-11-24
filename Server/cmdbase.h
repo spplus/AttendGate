@@ -27,7 +27,7 @@ public:
 protected:
 	int		connectNet(long mechineId,const char* ipaddr,int port);
 	void	disConnect(int connectId);
-
+	string	getResMsg(int resCode);
 protected:
 	int		str2i(string val)
 	{

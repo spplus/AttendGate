@@ -50,19 +50,22 @@ void CmdImpl::getUserList(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		return;
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
+		goto back;
 	}
 	int ret = FK_ReadAllUserID(cid);
-	if (ret != OP_SUCCUSS)
+	if (ret != RUN_SUCCESS)
 	{
-		LOG->message("读取用户列表到内存失败，错误代码%d.",ret);
-		res.set_rescode(0);
+		LOG->message("读取用户列表到内存失败，错误代码%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		res.set_rescode(ret);
+		res.set_resmsg(getResMsg(ret));
 		goto back;
 	}
 
 	long apnErollNumber,apnBackUpNumer,apnMechinePrivalige,apnEnableFlag;
-	ret = OP_SUCCUSS;
-	while(ret == OP_SUCCUSS)
+	ret = RUN_SUCCESS;
+	while(ret == RUN_SUCCESS)
 	{
 		ret = FK_GetAllUserID(cid,&apnErollNumber,&apnBackUpNumer,&apnMechinePrivalige,&apnEnableFlag);
 		PBNS::UserBean  *bean = res.add_user();
@@ -94,7 +97,8 @@ void CmdImpl::getUser(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
 	long apnMechinePrivalege,password;
@@ -103,7 +107,7 @@ void CmdImpl::getUser(sClientMsg* msg)
 
 	int ret = FK_GetEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber(),&apnMechinePrivalege,apnErollData,&password);
 	int length = 0;
-	if (ret == OP_SUCCUSS)
+	if (ret == RUN_SUCCESS)
 	{
 		res.mutable_user()->set_apnenrollnumer(req.apnenrollnumer());
 		res.mutable_user()->set_apnbackupnumber(req.apnbackupnumber());
@@ -120,8 +124,9 @@ void CmdImpl::getUser(sClientMsg* msg)
 	}
 	else
 	{
-		res.set_rescode(0);
-		LOG->message("获取用户数据失败，错误代码:%d.",ret);
+		res.set_rescode(ret);
+		res.set_resmsg(getResMsg(ret));
+		LOG->message("获取用户数据失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 	}
 
 	disConnect(cid);
@@ -143,20 +148,22 @@ void CmdImpl::putUser(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
 	
 	int ret = FK_PutEnrollData(cid,req.user().apnenrollnumer(),req.user().apnbackupnumber(),req.user().apnmechineprivilege(),(void*)req.user().apnenrolldata().c_str(),req.user().apnpassword());
-	if (ret == OP_SUCCUSS)
+	if (ret == RUN_SUCCESS)
 	{	
 		LOG->message("添加用户成功.");
 	}
 	else
 	{
-		LOG->message("添加用户失败，错误代码:%d.",ret);
+		LOG->message("添加用户失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 	}
 	res.set_rescode(ret);
+	res.set_resmsg(getResMsg(ret));
 	
 back:
 	string strData = res.SerializeAsString();
@@ -173,22 +180,24 @@ void CmdImpl::getLogData(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
 	
 	int ret = FK_LoadGeneralLogData(cid,req.readmask());
-	if (ret != OP_SUCCUSS)
+	if (ret != RUN_SUCCESS)
 	{
-		LOG->error("加载签到记录到内存失败，错误代码:%d",ret);
+		LOG->error("加载签到记录到内存失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 		res.set_rescode(ret);
+		res.set_resmsg(getResMsg(ret));
 		goto back;
 	}
 
 	long erollNumber,verifyMode,inOutMode;
 	DATE dateTime;
 	ret = FK_GetGeneralLogData(cid,&erollNumber,&verifyMode,&inOutMode,&dateTime);
-	while (ret == OP_SUCCUSS)
+	while (ret == RUN_SUCCESS)
 	{
 		PBNS::LogDataBean* bean	= res.add_logrec();
 		bean->set_apnenrollnumer(erollNumber);
@@ -207,7 +216,8 @@ void CmdImpl::getLogData(sClientMsg* msg)
 		res.set_rescode(0);
 		LOG->message("获取用户签到记录结束，获取记录数：%d.",0);
 	}
-
+	
+	res.set_resmsg(getResMsg(ret));
 back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);
@@ -225,20 +235,22 @@ void CmdImpl::enableUser(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;;
 	}
 	int ret = FK_EnableUser(cid,req.apnenrollnumer(),req.apnbackupnumber(),req.apnenableflag());
-	if (ret == OP_SUCCUSS)
+	if (ret == RUN_SUCCESS)
 	{
 		LOG->message("控制用户状态成功.");
 	}
 	else
 	{
-		LOG->message("控制用户状态失败，错误码:%d.",ret);
+		LOG->message("控制用户状态失败，错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 	}
 	disConnect(cid);
 	res.set_rescode(ret);
+	res.set_resmsg(getResMsg(ret));
 	
 back:
 	string strData = res.SerializeAsString();
@@ -261,14 +273,15 @@ void CmdImpl::delUser(sClientMsg* msg)
 	int cid = connect(req.attend());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
 
 	int ret = FK_DeleteEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber());
-	if (ret != OP_SUCCUSS)
+	if (ret != RUN_SUCCESS)
 	{
-		LOG->warn("删除用户失败,错误码:%d",ret);
+		LOG->warn("删除用户失败,错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 	}
 	else
 	{
@@ -276,6 +289,7 @@ void CmdImpl::delUser(sClientMsg* msg)
 	}
 	
 	res.set_rescode(ret);
+	res.set_resmsg(getResMsg(ret));
 
 back:
 	string strData = res.SerializeAsString();
@@ -295,22 +309,24 @@ void CmdImpl::setDoorStatus(sClientMsg* msg)
 	int cid = connectNet(req.attend().nmachinenumber(),req.attend().ipaddr().c_str(),req.attend().nport());
 	if (cid <= 0)
 	{
-		res.set_rescode(CONNECT_FAILED);
+		res.set_rescode(RUNERR_NO_OPEN_COMM);
+		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
 
 	int ret = FK_SetDoorStatus(cid,req.status());
 	ret = FK_SetDoorStatus(cid,DOOR_CONROLRESET);
-	if (ret == OP_SUCCUSS)
+	if (ret == RUN_SUCCESS)
 	{
 		LOG->message("控制门状态成功，门状态:%d",req.status());
 	}
 	else
 	{
-		LOG->message("控制门状态失败，错误码:%d",ret);
+		LOG->message("控制门状态失败，错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
 	}
 	disConnect(cid);
 	res.set_rescode(ret);
+	res.set_resmsg(getResMsg(ret));
 
 back:
 	string strData = res.SerializeAsString();

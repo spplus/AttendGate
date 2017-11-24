@@ -595,18 +595,33 @@ class GetAllUserIDMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 3;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 3;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.GetAllUserIDMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::UserBean > user_;
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -873,17 +888,32 @@ class PutEnrollDataMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 2;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 2;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.PutEnrollDataMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -1167,20 +1197,35 @@ class GetEnrollDataMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 3;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 3;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.GetEnrollDataMsg.Response)
  private:
   inline void set_has_user();
   inline void clear_has_user();
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::com::spplus::buff::UserBean* user_;
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -1457,18 +1502,33 @@ class GetGeneralLogDataMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 3;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 3;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.GetGeneralLogDataMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::com::spplus::buff::LogDataBean > logrec_;
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -1733,17 +1793,32 @@ class SetDoorStatusMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 2;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 2;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.SetDoorStatusMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -2028,17 +2103,32 @@ class EnableUserMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 2;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 2;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.EnableUserMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -2313,17 +2403,32 @@ class DeleteErollDataMsg_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rescode() const;
   inline void set_rescode(::google::protobuf::uint32 value);
 
+  // optional bytes resmsg = 2;
+  inline bool has_resmsg() const;
+  inline void clear_resmsg();
+  static const int kResmsgFieldNumber = 2;
+  inline const ::std::string& resmsg() const;
+  inline void set_resmsg(const ::std::string& value);
+  inline void set_resmsg(const char* value);
+  inline void set_resmsg(const void* value, size_t size);
+  inline ::std::string* mutable_resmsg();
+  inline ::std::string* release_resmsg();
+  inline void set_allocated_resmsg(::std::string* resmsg);
+
   // @@protoc_insertion_point(class_scope:com.spplus.buff.DeleteErollDataMsg.Response)
  private:
   inline void set_has_rescode();
   inline void clear_has_rescode();
+  inline void set_has_resmsg();
+  inline void clear_has_resmsg();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* resmsg_;
   ::google::protobuf::uint32 rescode_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_msgbody_2eproto();
   friend void protobuf_AssignDesc_msgbody_2eproto();
@@ -2965,6 +3070,76 @@ inline void GetAllUserIDMsg_Response::set_rescode(::google::protobuf::uint32 val
   rescode_ = value;
 }
 
+// optional bytes resmsg = 3;
+inline bool GetAllUserIDMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GetAllUserIDMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GetAllUserIDMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GetAllUserIDMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& GetAllUserIDMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void GetAllUserIDMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetAllUserIDMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetAllUserIDMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetAllUserIDMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* GetAllUserIDMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void GetAllUserIDMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // GetAllUserIDMsg
@@ -3149,6 +3324,76 @@ inline ::google::protobuf::uint32 PutEnrollDataMsg_Response::rescode() const {
 inline void PutEnrollDataMsg_Response::set_rescode(::google::protobuf::uint32 value) {
   set_has_rescode();
   rescode_ = value;
+}
+
+// optional bytes resmsg = 2;
+inline bool PutEnrollDataMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PutEnrollDataMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PutEnrollDataMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PutEnrollDataMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& PutEnrollDataMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void PutEnrollDataMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void PutEnrollDataMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void PutEnrollDataMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* PutEnrollDataMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* PutEnrollDataMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void PutEnrollDataMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
@@ -3381,6 +3626,76 @@ inline void GetEnrollDataMsg_Response::set_rescode(::google::protobuf::uint32 va
   rescode_ = value;
 }
 
+// optional bytes resmsg = 3;
+inline bool GetEnrollDataMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GetEnrollDataMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GetEnrollDataMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GetEnrollDataMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& GetEnrollDataMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void GetEnrollDataMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetEnrollDataMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetEnrollDataMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetEnrollDataMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* GetEnrollDataMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void GetEnrollDataMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // GetEnrollDataMsg
@@ -3576,6 +3891,76 @@ inline void GetGeneralLogDataMsg_Response::set_rescode(::google::protobuf::uint3
   rescode_ = value;
 }
 
+// optional bytes resmsg = 3;
+inline bool GetGeneralLogDataMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GetGeneralLogDataMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GetGeneralLogDataMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GetGeneralLogDataMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& GetGeneralLogDataMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void GetGeneralLogDataMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetGeneralLogDataMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void GetGeneralLogDataMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetGeneralLogDataMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* GetGeneralLogDataMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void GetGeneralLogDataMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // GetGeneralLogDataMsg
@@ -3744,6 +4129,76 @@ inline ::google::protobuf::uint32 SetDoorStatusMsg_Response::rescode() const {
 inline void SetDoorStatusMsg_Response::set_rescode(::google::protobuf::uint32 value) {
   set_has_rescode();
   rescode_ = value;
+}
+
+// optional bytes resmsg = 2;
+inline bool SetDoorStatusMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SetDoorStatusMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SetDoorStatusMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SetDoorStatusMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& SetDoorStatusMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void SetDoorStatusMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void SetDoorStatusMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void SetDoorStatusMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SetDoorStatusMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* SetDoorStatusMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SetDoorStatusMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
@@ -3960,6 +4415,76 @@ inline void EnableUserMsg_Response::set_rescode(::google::protobuf::uint32 value
   rescode_ = value;
 }
 
+// optional bytes resmsg = 2;
+inline bool EnableUserMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EnableUserMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EnableUserMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EnableUserMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& EnableUserMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void EnableUserMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void EnableUserMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void EnableUserMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* EnableUserMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* EnableUserMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void EnableUserMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // EnableUserMsg
@@ -4150,6 +4675,76 @@ inline ::google::protobuf::uint32 DeleteErollDataMsg_Response::rescode() const {
 inline void DeleteErollDataMsg_Response::set_rescode(::google::protobuf::uint32 value) {
   set_has_rescode();
   rescode_ = value;
+}
+
+// optional bytes resmsg = 2;
+inline bool DeleteErollDataMsg_Response::has_resmsg() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeleteErollDataMsg_Response::set_has_resmsg() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeleteErollDataMsg_Response::clear_has_resmsg() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeleteErollDataMsg_Response::clear_resmsg() {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    resmsg_->clear();
+  }
+  clear_has_resmsg();
+}
+inline const ::std::string& DeleteErollDataMsg_Response::resmsg() const {
+  return *resmsg_;
+}
+inline void DeleteErollDataMsg_Response::set_resmsg(const ::std::string& value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void DeleteErollDataMsg_Response::set_resmsg(const char* value) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(value);
+}
+inline void DeleteErollDataMsg_Response::set_resmsg(const void* value, size_t size) {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  resmsg_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* DeleteErollDataMsg_Response::mutable_resmsg() {
+  set_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    resmsg_ = new ::std::string;
+  }
+  return resmsg_;
+}
+inline ::std::string* DeleteErollDataMsg_Response::release_resmsg() {
+  clear_has_resmsg();
+  if (resmsg_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = resmsg_;
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void DeleteErollDataMsg_Response::set_allocated_resmsg(::std::string* resmsg) {
+  if (resmsg_ != &::google::protobuf::internal::kEmptyString) {
+    delete resmsg_;
+  }
+  if (resmsg) {
+    set_has_resmsg();
+    resmsg_ = resmsg;
+  } else {
+    clear_has_resmsg();
+    resmsg_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
