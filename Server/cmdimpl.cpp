@@ -57,7 +57,7 @@ void CmdImpl::getUserList(sClientMsg* msg)
 	int ret = FK_ReadAllUserID(cid);
 	if (ret != RUN_SUCCESS)
 	{
-		LOG->message("读取用户列表到内存失败，错误代码%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->message("读取用户列表到内存失败,错误信息:%s.",getResMsg(ret).c_str());
 		res.set_rescode(ret);
 		res.set_resmsg(getResMsg(ret));
 		goto back;
@@ -126,7 +126,7 @@ void CmdImpl::getUser(sClientMsg* msg)
 	{
 		res.set_rescode(ret);
 		res.set_resmsg(getResMsg(ret));
-		LOG->message("获取用户数据失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->message("获取用户数据失败，错误信息:%s.",getResMsg(ret).c_str());
 	}
 
 	disConnect(cid);
@@ -160,7 +160,7 @@ void CmdImpl::putUser(sClientMsg* msg)
 	}
 	else
 	{
-		LOG->message("添加用户失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->message("添加用户失败，错误信息:%s.",getResMsg(ret).c_str());
 	}
 	res.set_rescode(ret);
 	res.set_resmsg(getResMsg(ret));
@@ -188,7 +188,7 @@ void CmdImpl::getLogData(sClientMsg* msg)
 	int ret = FK_LoadGeneralLogData(cid,req.readmask());
 	if (ret != RUN_SUCCESS)
 	{
-		LOG->error("加载签到记录到内存失败，错误代码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->error("加载签到记录到内存失败,错误信息:%s.",getResMsg(ret).c_str());
 		res.set_rescode(ret);
 		res.set_resmsg(getResMsg(ret));
 		goto back;
@@ -246,7 +246,7 @@ void CmdImpl::enableUser(sClientMsg* msg)
 	}
 	else
 	{
-		LOG->message("控制用户状态失败，错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->message("控制用户状态失败，错误信息:%s.",getResMsg(ret).c_str());
 	}
 	disConnect(cid);
 	res.set_rescode(ret);
@@ -281,7 +281,7 @@ void CmdImpl::delUser(sClientMsg* msg)
 	int ret = FK_DeleteEnrollData(cid,req.apnenrollnumer(),req.apnbackupnumber());
 	if (ret != RUN_SUCCESS)
 	{
-		LOG->warn("删除用户失败,错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->warn("删除用户失败,错误信息:%s.",getResMsg(ret).c_str());
 	}
 	else
 	{
@@ -322,7 +322,7 @@ void CmdImpl::setDoorStatus(sClientMsg* msg)
 	}
 	else
 	{
-		LOG->message("控制门状态失败，错误码:%d,错误信息:%s.",ret,getResMsg(ret).c_str());
+		LOG->message("控制门状态失败,错误信息:%s.",getResMsg(ret).c_str());
 	}
 	disConnect(cid);
 	res.set_rescode(ret);

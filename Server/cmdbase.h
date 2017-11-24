@@ -29,6 +29,9 @@ protected:
 	void	disConnect(int connectId);
 	string	getResMsg(int resCode);
 protected:
+
+	string	formartMsg(int code,string msg);
+
 	int		str2i(string val)
 	{
 		return ACE_OS::atoi(val.c_str());
