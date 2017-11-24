@@ -84,3 +84,6 @@ $RECYCLE.BIN/
 *.cache
 Debug
 ipch
+*.pdb
+*.tlog
+bin/AttendGate_R.lib

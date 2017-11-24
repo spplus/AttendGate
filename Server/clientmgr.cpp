@@ -57,5 +57,5 @@ int ClientMgr::sendData(unsigned int connid,string data,int msgtype)
 		LOG->error("can not find connection :%d,send failed.",connid);
 		return -1;
 	}
-	
+	return outLength;
 }
