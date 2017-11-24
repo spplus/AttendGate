@@ -285,7 +285,7 @@ void CmdImpl::delUser(sClientMsg* msg)
 	}
 	else
 	{
-		LOG->message("删除用户成功,设备IP:%s,设备编号:%d",req.attend().ipaddr().c_str(),req.attend().nmachinenumber(),anpErollNumber);
+		LOG->message("删除用户成功");
 	}
 	
 	res.set_rescode(ret);
