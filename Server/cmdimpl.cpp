@@ -305,7 +305,7 @@ void CmdImpl::setDoorStatus(sClientMsg* msg)
 	req.ParseFromArray(msg->data,msg->length);
 	
 	LOG->message("¿ØÖÆÃÅ×´Ì¬£¬ÃÅ×´Ì¬:%d",req.status());
-
+	
 	int cid = connectNet(req.attend().nmachinenumber(),req.attend().ipaddr().c_str(),req.attend().nport());
 	if (cid <= 0)
 	{

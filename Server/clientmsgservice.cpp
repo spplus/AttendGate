@@ -45,7 +45,7 @@ int ClientMsgService::svc()
 
 void ClientMsgService::parseData(ACE_Message_Block* mb)
 {
-	if (mb->length() > MAX_PACKET_LEN)
+ 	if (mb->length() > MAX_PACKET_LEN)
 	{
 		LOG->error("Invalid data length %d",mb->length());
 		return;

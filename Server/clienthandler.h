@@ -30,7 +30,7 @@ private:
 	unsigned int	m_connectId;
 
 	// 数据头，用于后续数据包长度
-	ACE_Message_Block*	m_head;
+	ACE_Message_Block*	m_recvBuff;
 };
 
 #endif

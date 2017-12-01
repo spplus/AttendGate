@@ -11,7 +11,7 @@
 
 ClientHandler::ClientHandler()
 {
-	m_head = new ACE_Message_Block(FRAME_HEAD_LEN);
+	m_recvBuff = new ACE_Message_Block(MAX_PACKET_LEN);
 }
 
 int ClientHandler::open(void*p)
@@ -54,12 +54,12 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 	}
 
 	// 保存消息头内容
-	ACE_OS::memcpy(m_head->wr_ptr(),buff,len);
-	m_head->wr_ptr(len);
+	ACE_OS::memcpy(m_recvBuff->wr_ptr(),buff,len);
+	m_recvBuff->wr_ptr(len);
 
-	if (m_head->length()<FRAME_HEAD_LEN)
+	if (m_recvBuff->length()<FRAME_HEAD_LEN)
 	{
-		LOG->warn("invalid frame head len:%d,recived head length:%d",len,m_head->length());
+		LOG->warn("invalid frame head len:%d,recived head length:%d",len,m_recvBuff->length());
 		return 0;
 	}
 	else
@@ -76,53 +76,61 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 
 	// 解析出数据包长度
 	unsigned long int plen = 0;
-	ACE_OS::memcpy(&plen,m_head->rd_ptr(),FRAME_HEAD_LEN);
+	ACE_OS::memcpy(&plen,m_recvBuff->rd_ptr(),FRAME_HEAD_LEN);
+	m_recvBuff->rd_ptr(FRAME_HEAD_LEN);
 	
 	LOG->message("packet length:%d",plen);
 
-	m_head->rd_ptr(FRAME_HEAD_LEN);
-	m_head->reset();
+	//m_head->reset();
 
 		// 判断数据包长度是否非法
 		if (plen > MAX_PACKET_LEN || plen <0)
 		{
 			LOG->warn("invalid packet length:%d",plen);
+			m_recvBuff->reset();
 			return 0;
 		}
-		// 接收包体内容
-		ACE_Message_Block* mb = new ACE_Message_Block(plen);
-
+	
 		// 总接收长度
 		int total = 0;
 
 		// 继续读取包体内容
-		int dlen = peer().recv(mb->wr_ptr(),plen,&nowait);
+		int dlen = peer().recv(m_recvBuff->wr_ptr(),plen,&nowait);
 		if (dlen <= 0)
 		{
 			LOG->warn("recv packet failed,recived :%d",dlen);
-			mb->release();
+			m_recvBuff->reset();
 			return -1;
 		}
 		total = dlen;
-		mb->wr_ptr(dlen);
+		m_recvBuff->wr_ptr(dlen);
 
 		// 如果短读，则继续读取。
 		while(total < plen)
 		{
-			ACE_DEBUG((LM_DEBUG,"[%D]包总长度:%d,本次接收:%d,累计接收:%d.\n",plen,dlen,total));
-			dlen = peer().recv(mb->wr_ptr(),plen-total,&nowait);
+			LOG->message("包总长度:%d,本次接收:%d,累计接收:%d.",plen,dlen,total);
+			dlen = peer().recv(m_recvBuff->wr_ptr(),plen-total,&nowait);
 			if (dlen<=0)
 			{
-				mb->release();
+				LOG->warn("接收数据异常:%d,包总长度:%d,本次接收:%d,累计接收:%d.",GetLastError(),plen,dlen,total);
+				m_recvBuff->reset();
 				return -1;
+
 			}
-			mb->wr_ptr(dlen);
+			m_recvBuff->wr_ptr(dlen);
 			total += dlen;
 		}
 
 		// 接收完整包，投递到数据处理队列
 		if (total == plen)
 		{
+			// 接收包体内容
+			ACE_Message_Block* mb = new ACE_Message_Block(plen);
+
+			ACE_OS::memcpy(mb->wr_ptr(),m_recvBuff->rd_ptr(),plen);
+			mb->wr_ptr(plen);
+			m_recvBuff->rd_ptr(plen);
+
 			// 把消息标记上连接ID,以业务层处理完可以原路返回
 			mb->msg_type(m_connectId);
 			if(App_CMService::instance()->putq(mb) != -1)
@@ -132,7 +140,7 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 		}
 		else
 		{
-			mb->release();
+			m_recvBuff->reset();
 
 			// 接收包长度错误
 			LOG->error("Invalid packet length.packet length %d,recive %d.",plen,total);
@@ -156,6 +164,8 @@ int ClientHandler::handle_close(ACE_HANDLE h, ACE_Reactor_Mask mask)
 		{
 			LOG->debug("Connection closed:%s.",peer_name);
 		}
+		// 释放接收缓冲区资源
+		m_recvBuff->release();
 
 		// 释放队列资源
 		this->wait();
