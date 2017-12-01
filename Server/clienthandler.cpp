@@ -96,15 +96,16 @@ int ClientHandler::handle_input(ACE_HANDLE fd )
 
 		// 继续读取包体内容
 		int dlen = peer().recv(m_recvBuff->wr_ptr(),plen,&nowait);
+		m_recvBuff->wr_ptr(dlen);
 		if (dlen <= 0)
 		{
 			LOG->warn("recv packet failed,recived :%d",dlen);
 			m_recvBuff->reset();
 			return -1;
 		}
-		total = dlen;
-		m_recvBuff->wr_ptr(dlen);
-
+		// 累计接收到的数据长度
+		total = m_recvBuff->length();
+		
 		// 如果短读，则继续读取。
 		while(total < plen)
 		{
