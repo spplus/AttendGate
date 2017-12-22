@@ -152,19 +152,24 @@ void CmdImpl::putUser(sClientMsg* msg)
 		res.set_resmsg(getResMsg(RUNERR_NO_OPEN_COMM));
 		goto back;
 	}
-	
-	int ret = FK_PutEnrollData(cid,req.user().apnenrollnumer(),req.user().apnbackupnumber(),req.user().apnmechineprivilege(),(void*)req.user().apnenrolldata().c_str(),req.user().apnpassword());
-	if (ret == RUN_SUCCESS)
-	{	
-		LOG->message("添加用户成功.");
+	try {
+		int ret = FK_PutEnrollData(cid,req.user().apnenrollnumer(),req.user().apnbackupnumber(),req.user().apnmechineprivilege(),(void*)req.user().apnenrolldata().c_str(),req.user().apnpassword());
+		if (ret == RUN_SUCCESS)
+		{	
+			LOG->message("添加用户成功.");
+		}
+		else
+		{
+			LOG->message("添加用户失败，错误信息:%s.",getResMsg(ret).c_str());
+		}
+		res.set_rescode(ret);
+		res.set_resmsg(getResMsg(ret));
 	}
-	else
-	{
-		LOG->message("添加用户失败，错误信息:%s.",getResMsg(ret).c_str());
+	catch (...) {
+		res.set_rescode(0);
+		res.set_resmsg("接口调用发生异常");
 	}
-	res.set_rescode(ret);
-	res.set_resmsg(getResMsg(ret));
-	
+
 back:
 	string strData = res.SerializeAsString();
 	App_ClientMgr::instance()->sendData(msg->connectId,strData,msg->type);

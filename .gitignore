@@ -87,3 +87,4 @@ ipch
 *.pdb
 *.tlog
 bin/AttendGate_R.lib
+*.rar
